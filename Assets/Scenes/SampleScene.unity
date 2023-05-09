@@ -135,8 +135,6 @@ GameObject:
   - component: {fileID: 482808183}
   - component: {fileID: 482808182}
   - component: {fileID: 482808186}
-  - component: {fileID: 482808188}
-  - component: {fileID: 482808187}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -249,32 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b72981ce2af6ae439c88d39a578034e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &482808187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 482808180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b201e532d0d90e4dbe76df7e4375c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   prefabBullet: {fileID: 3645815506486920384, guid: 40ed3546d34fcb745b98a6934f164cdc, type: 3}
-  speed: 0
---- !u!114 &482808188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 482808180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e14de136cb63455418348c50f1c89f23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,7 +795,6 @@ GameObject:
   - component: {fileID: 1982772256}
   - component: {fileID: 1982772258}
   - component: {fileID: 1982772259}
-  - component: {fileID: 1982772260}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -935,20 +907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b72981ce2af6ae439c88d39a578034e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1982772260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1982772254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b201e532d0d90e4dbe76df7e4375c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   prefabBullet: {fileID: 3645815506486920384, guid: 40ed3546d34fcb745b98a6934f164cdc, type: 3}
-  speed: 0
 --- !u!1 &2050886300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,5 +966,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b201e532d0d90e4dbe76df7e4375c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabBullet: {fileID: 0}
-  speed: 0

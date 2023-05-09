@@ -14,32 +14,15 @@ public class Manager : MonoBehaviour
     private int cPos_h; // 배열에서 플레이어의 세로 위치
     private int cPos_w; // 배열에서 플레이어의 가로 위치
 
-    public GameObject prefabBullet;
-    float time;
-    public float speed;
-
     private void Start()
     {
-        time = 0;
-        speed = 10.0f;
     }
 
-    public void FireBullet()
-    {
-        time += Time.deltaTime;
-        Debug.Log("Fire" + time);
-        if(time > 0.3f)
-        {
-            Instantiate(prefabBullet, transform.position, Quaternion.identity);
-            time -= 0.5f;
-        }
-    }
 
     // Update is called once per frame
     void Update()
     {
         Movement();
-        FireBullet();
         MouseClick();
     }
 
