@@ -5,9 +5,11 @@ using UnityEngine;
 public class Pattern : MonoBehaviour
 {
     public GameObject projectilePrefab; // 발사할 총알 프리팹
+    public int damage = 1; // 총알 데미지
     public float speed = 10f; // 총알 속도
     public float fireRate = 1f; // 발사 속도
     public float delayBetweenShots = 0.5f; // 발사 사이 딜레이
+    public float destroyTime = 5f; // 총알 삭제 시간
 
     private bool canShoot = true; // 발사 가능 여부
     private Vector2[] spawnPoints; // 총알이 나오는 위치 배열
@@ -45,6 +47,9 @@ public class Pattern : MonoBehaviour
                 GameObject projectile = Instantiate(projectilePrefab, spawnPoints[Random.Range(0, 3)], Quaternion.identity);
                 Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
                 rb.velocity = new Vector2(0f, -speed);
+
+                // 총알 삭제 타이머 시작
+                Destroy(projectile, destroyTime);
             }
 
             yield return new WaitForSeconds(1f / fireRate);
@@ -53,14 +58,5 @@ public class Pattern : MonoBehaviour
             canShoot = true;
         }
     }
-
-    // 총알 충돌 처리
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
-    }
+    
 }

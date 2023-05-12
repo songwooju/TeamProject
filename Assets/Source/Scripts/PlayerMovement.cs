@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public int health = 3;
+    public int maxHealth = 3; // 최대 체력
+    public int currentHealth; // 현재 체력
+
     float time;
     public GameObject prefabBullet;
 
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = maxHealth;
         time = 0;
     }
 
@@ -19,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         FireBullet();
     }
+
     public void FireBullet()
     {
         time += Time.deltaTime;
@@ -28,5 +32,10 @@ public class PlayerMovement : MonoBehaviour
             Instantiate(prefabBullet, transform.position, Quaternion.identity);
             time -= 0.5f;
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
     }
 }
