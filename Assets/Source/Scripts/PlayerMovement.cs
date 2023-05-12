@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public int health = 3;
     float time;
     public GameObject prefabBullet;
 
