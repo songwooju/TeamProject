@@ -14,16 +14,24 @@ public class Manager : MonoBehaviour
     private int cPos_h; // 배열에서 플레이어의 세로 위치
     private int cPos_w; // 배열에서 플레이어의 가로 위치
 
+    SpriteRenderer spriteColor;
+    bool isBossPattern; 
+    public GameObject[] Floors; // 바닥을 배열로 받음
+    int randomTilePos = 0; // 보스패턴때 랜덤으로 정해질 타일 위치
+
     private void Start()
     {
+        isBossPattern = false;
+        Floors = GameObject.FindGameObjectsWithTag("Floor"); // Floor태그를 갖고 있는 오브젝트를 배열로 받아옴.
     }
-
 
     // Update is called once per frame
     void Update()
     {
         Movement();
         MouseClick();
+        BossPattern();
+        StartCoroutine(BossPatternRoutine());
     }
 
     void Movement() // MouseClick() 에서 받은 player를 이동, 타일 밖을 벗어나지 못하게 제한
@@ -189,6 +197,34 @@ public class Manager : MonoBehaviour
                 currentPos = player.gameObject.transform.position;
                 characterArray();
             }
+        }
+    }
+
+    void BossPattern()
+    {
+        spriteColor = Floors[randomTilePos].gameObject.GetComponent<SpriteRenderer>();
+
+        if (!isBossPattern) // 보스패턴이 아니라면 
+        {
+            randomTilePos = Random.Range(0, 9);
+            spriteColor.material.color = Color.white;
+        }
+        else if (isBossPattern) // 보스패턴이라면
+        {
+            spriteColor.material.color = Color.red;
+        }
+    }
+    IEnumerator BossPatternRoutine() // 5초 간격으로 보스패턴형성
+    {
+        if (isBossPattern)
+        {
+            yield return new WaitForSeconds(5.0f);
+            isBossPattern = false;
+        }
+        else
+        {
+            yield return new WaitForSeconds(5.0f);
+            isBossPattern = true;
         }
     }
 }
