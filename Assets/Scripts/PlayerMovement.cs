@@ -38,4 +38,14 @@ public class PlayerMovement : MonoBehaviour
     {
         currentHealth -= damage;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Item"))
+        {
+            Manager.instance.currentObjectCount = 0;
+            Manager.instance.itemBuff = true;
+            Destroy(collision.gameObject);
+        }
+    }
 }

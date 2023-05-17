@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
+    public static Manager instance = null;
+
     private GameObject target;
     private RaycastHit2D mHit;
 
@@ -19,6 +21,32 @@ public class Manager : MonoBehaviour
     public GameObject[] Floors; // 바닥을 배열로 받음
     int randomTilePos = 0; // 보스패턴때 랜덤으로 정해질 타일 위치
 
+    public int randomItemPos = 0; // 아이템 생성시 랜덤으로 정해질 위치
+    public int randomItem = 0; // 랜덤으로 정해질 아이템
+    Vector2 itemPos; // 아이템생성 위치
+    public GameObject[] Items = new GameObject[2]; // 아이템 배열로 설정 
+
+    float objectSpwanTime = 0.0f; // 오브젝트 생성 제한 시간 (오브젝트가 없어지고 5초 후에 재생성)
+    int objectSpwanCount = 1; // 오브젝트 생성 갯수 제한
+    public int currentObjectCount = 0; // 현재 생성된 오브젝트 수, Player가 아이템을 먹으면 0으로 만듦
+
+    public bool itemBuff = false; // 아이템 효과 적용
+    float itemBuffTime = 5.0f; // 아이템 효과 적용 시간
+
+
+    private void Awake() // 싱글톤
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            if (instance != this) Destroy(this.gameObject);
+        }
+    }
+
     private void Start()
     {
         isBossPattern = false;
@@ -28,10 +56,15 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        objectSpwanTime += Time.deltaTime;
+
         Movement();
         MouseClick();
         BossPattern();
         StartCoroutine(BossPatternRoutine());
+        ItemRandomPos();
+        ItemSqwanTime();
+        ItemBuffTime();
     }
 
     void Movement() // MouseClick() 에서 받은 player를 이동, 타일 밖을 벗어나지 못하게 제한
@@ -225,6 +258,42 @@ public class Manager : MonoBehaviour
         {
             yield return new WaitForSeconds(5.0f);
             isBossPattern = true;
+        }
+    }
+
+    void ItemRandomPos() // 아이템이 생성될 위치를 정함
+    {
+        if (currentObjectCount + 1 > objectSpwanCount) return;
+
+        if (objectSpwanTime > 5.0f)
+        {
+            randomItem = Random.Range(0, 2);
+            randomItemPos = Random.Range(0, 9);
+            itemPos = Floors[randomItemPos].transform.position;
+            Instantiate(Items[randomItem], itemPos, Quaternion.identity);
+
+            currentObjectCount += 1;
+        }
+    }
+
+    void ItemSqwanTime() // 아이템 생성 시간
+    {
+        if (currentObjectCount + 1 > objectSpwanCount)
+        {
+            objectSpwanTime = 0.0f;
+        }
+    }
+
+    void ItemBuffTime()
+    {
+        if (itemBuff)
+        {
+            itemBuffTime -= Time.deltaTime;
+            if (itemBuffTime <= 0.0f)
+            {
+                itemBuff = false;
+                itemBuffTime = 5.0f;
+            }
         }
     }
 }

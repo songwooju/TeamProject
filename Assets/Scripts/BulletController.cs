@@ -21,6 +21,7 @@ public class BulletController : MonoBehaviour
     {
         FireBullet();
         DestroyBullet();
+        BulletDamageChange();
     }
 
     void FireBullet()
@@ -52,5 +53,14 @@ public class BulletController : MonoBehaviour
             }
             Destroy(gameObject); // ÃÑ¾ËÀ» ÆÄ±«ÇÔ
         }
+    }
+
+    void BulletDamageChange()
+    {
+        if (Manager.instance.itemBuff)
+        {
+            damage = 12;
+        }
+        else damage = 10;
     }
 }
