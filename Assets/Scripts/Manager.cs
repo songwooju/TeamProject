@@ -60,7 +60,7 @@ public class Manager : MonoBehaviour
 
         Movement();
         MouseClick();
-        BossPattern();
+        //BossPattern();
         StartCoroutine(BossPatternRoutine());
         ItemRandomPos();
         ItemSqwanTime();
