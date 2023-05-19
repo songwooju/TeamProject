@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6927914376650827480}
   - component: {fileID: 1063208842744045353}
   - component: {fileID: -7141530154911202030}
-  - component: {fileID: 3598619404622891127}
+  - component: {fileID: 9130729403746745354}
   m_Layer: 0
   m_Name: Bullet2
   m_TagString: Untagged
@@ -124,7 +124,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3598619404622891127
+--- !u!114 &9130729403746745354
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,17 +133,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2443776912490544602}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35499a4b2aa70e44b4fc15310030418, type: 3}
+  m_Script: {fileID: 11500000, guid: a27a5d8a2166eac4ba606e15e621d62b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  bulletPrefab: {fileID: 2443776912490544602}
