@@ -7,7 +7,7 @@ public class BulletController : MonoBehaviour
     public float speed;
     public Transform bossTransform;
 
-    private int damage = 10; // 총알의 데미지
+    private int damage = 1; // 총알의 데미지
 
     // Start is called before the first frame update
     void Start()
@@ -57,10 +57,14 @@ public class BulletController : MonoBehaviour
 
     void BulletDamageChange()
     {
-        if (Manager.instance.itemBuff)
+        if (Manager.instance != null && Manager.instance.itemBuff)
         {
             damage = 12;
         }
-        else damage = 10;
+        else
+        {
+            damage = 10;
+        }
     }
+
 }

@@ -9,7 +9,7 @@ public class Manager : MonoBehaviour
     private GameObject target;
     private RaycastHit2D mHit;
 
-    private PlayerMovement player;
+    private Player player;
     private Vector3 currentPos; // 플레이어의 현재 위치
 
     int[,] posArray = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } }; // 3x3 배열을 만들어서 타일 위치에 플레이어가 있는지 확인하는 용도
@@ -226,7 +226,7 @@ public class Manager : MonoBehaviour
             target = GetClickedObject();
             if (target.CompareTag("Player"))
             {
-                player = target.GetComponent<PlayerMovement>();
+                player = target.GetComponent<Player>();
                 currentPos = player.gameObject.transform.position;
                 characterArray();
             }
