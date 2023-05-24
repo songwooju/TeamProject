@@ -11,8 +11,13 @@ public class Pattern : MonoBehaviour
     public float delayBetweenShots = 0.5f; // 발사 사이 딜레이
     public float destroyTime = 1.0f; // 총알 삭제 시간
 
-    private bool canShoot = true; // 발사 가능 여부
     private Vector2[] spawnPoints; // 총알이 나오는 위치 배열
+
+    public Transform[] tiles;
+    private float tileChangeDuration = 1.0f;
+
+    int index;
+    int tileIndex;
 
     private void Start()
     {
@@ -28,39 +33,90 @@ public class Pattern : MonoBehaviour
         spawnPoints[1] = new Vector2(transform.position.x, middleY); // 중앙
         spawnPoints[2] = new Vector2(rightX - transform.localScale.x / 6f, middleY); // 우측 중앙
 
-        StartCoroutine(Shoot());
+        ShootManager();
+        //StartCoroutine(Shoot());
     }
 
-    private IEnumerator Shoot()
+    //private IEnumerator Shoot()
+    //{
+    //    while (true)
+    //    {
+
+    //        while (!canShoot)
+    //        {
+    //            yield return null;
+    //        }
+
+
+    //        for (int i = 0; i < 2; i++)
+    //        {
+    //            GameObject projectile = Instantiate(projectilePrefab, spawnPoints[Random.Range(0, 3)], Quaternion.identity);
+    //            Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+    //            rb.velocity = new Vector2(0f, -speed);
+
+
+    //            Destroy(projectile, destroyTime);
+    //        }
+
+    //        Player player = FindObjectOfType<Player>();
+    //        if (player != null)
+    //        {
+    //            player.mp += 10;
+    //        }
+
+    //        yield return new WaitForSeconds(1f / fireRate);
+
+    //        canShoot = true;
+    //    }
+    //}
+
+    void ShootManager()
     {
-        while (true)
+        index = Random.Range(0, 3);
+        Transform[] targetTile = new Transform[3];
+
+        SwitchUpdate();
+
+        for (int i = 0; i < 3; i++)
         {
-            
-            while (!canShoot)
-            {
-                yield return null;
-            }
+            targetTile[i] = tiles[tileIndex + i];
+            StartCoroutine(ChangeTileColor(targetTile[i], Color.red));
+        }
 
-        
-            for (int i = 0; i < 2; i++)
-            {
-                GameObject projectile = Instantiate(projectilePrefab, spawnPoints[Random.Range(0, 3)], Quaternion.identity);
-                Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-                rb.velocity = new Vector2(0f, -speed);
+        GameObject projectile = Instantiate(projectilePrefab, spawnPoints[index], Quaternion.identity);
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(0f, -speed);
 
-             
-                Destroy(projectile, destroyTime);
-            }
 
-            //Player player = FindObjectOfType<Player>();
-            //if (player != null)
-            //{
-                //player.mp += 10;
-            //}
+        for (int i = 0; i < 3; i++)
+        {
+            targetTile[i] = tiles[tileIndex + i];
+            StartCoroutine(ChangeTileColor(targetTile[i], Color.white, tileChangeDuration + 1.0f));
+        }
 
-            yield return new WaitForSeconds(1f / fireRate);
+        Invoke("ShootManager", tileChangeDuration + 2f);
+    }
 
-            canShoot = true;
+    IEnumerator ChangeTileColor(Transform tile, Color color, float delay = 0f)
+    {
+        yield return new WaitForSeconds(delay);
+        SpriteRenderer tileRenderer = tile.GetComponent<SpriteRenderer>();
+        tileRenderer.color = color;
+    }
+
+    void SwitchUpdate()
+    {
+        switch (index)
+        {
+            case 0:
+                tileIndex = 0;
+                break;
+            case 1:
+                tileIndex = 3;
+                break;
+            case 2:
+                tileIndex = 6;
+                break;
         }
     }
 }
