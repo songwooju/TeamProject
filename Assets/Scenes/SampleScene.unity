@@ -1243,8 +1243,8 @@ GameObject:
   - component: {fileID: 1046140801}
   - component: {fileID: 1046140800}
   - component: {fileID: 1046140799}
-  - component: {fileID: 1046140798}
   - component: {fileID: 1046140802}
+  - component: {fileID: 1046140803}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Player
@@ -1252,19 +1252,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1046140798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046140797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b72981ce2af6ae439c88d39a578034e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabBullet: {fileID: 3645815506486920384, guid: 40ed3546d34fcb745b98a6934f164cdc, type: 3}
 --- !u!61 &1046140799
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1379,6 +1366,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1046140803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046140797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec17c1d03eafa345a80e1a94eacbf85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabBullet: {fileID: 3645815506486920384, guid: 40ed3546d34fcb745b98a6934f164cdc, type: 3}
 --- !u!1 &1059173392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,6 +2176,46 @@ PrefabInstance:
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 2659513486975927413, guid: d178f7f0f70d3ea4daeffafd9a6b043d, type: 3}
+    - target: {fileID: 1964544970801887200, guid: 92238a8831f44e84090685a9c31f8177, type: 3}
+      propertyPath: tiles.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1964544970801887200, guid: 92238a8831f44e84090685a9c31f8177, type: 3}
+      propertyPath: tiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 743195863}
+    - target: {fileID: 1964544970801887200, guid: 92238a8831f44e84090685a9c31f8177, type: 3}
+      propertyPath: tiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 170077274}
+    - target: {fileID: 1964544970801887200, guid: 92238a8831f44e84090685a9c31f8177, type: 3}
+      propertyPath: tiles.Array.data[2]
+      value: 
+      objectReference: {fileID: 1552754454}
+    - target: {fileID: 1964544970801887200, guid: 92238a8831f44e84090685a9c31f8177, type: 3}
+      propertyPath: tiles.Array.data[3]
+      value: 
+      objectReference: {fileID: 1562398849}
+    - target: {fileID: 1964544970801887200, guid: 92238a8831f44e84090685a9c31f8177, type: 3}
+      propertyPath: tiles.Array.data[4]
+      value: 
+      objectReference: {fileID: 437084686}
+    - target: {fileID: 1964544970801887200, guid: 92238a8831f44e84090685a9c31f8177, type: 3}
+      propertyPath: tiles.Array.data[5]
+      value: 
+      objectReference: {fileID: 513917928}
+    - target: {fileID: 1964544970801887200, guid: 92238a8831f44e84090685a9c31f8177, type: 3}
+      propertyPath: tiles.Array.data[6]
+      value: 
+      objectReference: {fileID: 1067650961}
+    - target: {fileID: 1964544970801887200, guid: 92238a8831f44e84090685a9c31f8177, type: 3}
+      propertyPath: tiles.Array.data[7]
+      value: 
+      objectReference: {fileID: 543703343}
+    - target: {fileID: 1964544970801887200, guid: 92238a8831f44e84090685a9c31f8177, type: 3}
+      propertyPath: tiles.Array.data[8]
+      value: 
+      objectReference: {fileID: 1956235462}
     - target: {fileID: 1964544970801887203, guid: 92238a8831f44e84090685a9c31f8177, type: 3}
       propertyPath: m_Name
       value: Square

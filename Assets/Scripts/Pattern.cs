@@ -14,6 +14,12 @@ public class Pattern : MonoBehaviour
     private bool canShoot = true;
     private Vector2[] spawnPoints;
 
+    public Transform[] tiles;
+    private float tileChangeDuration = 1.0f;
+
+    int index;
+    int tileIndex;
+
     private void Start()
     {
         spawnPoints = new Vector2[3];
@@ -28,7 +34,8 @@ public class Pattern : MonoBehaviour
         spawnPoints[1] = new Vector2(transform.position.x, middleY);
         spawnPoints[2] = new Vector2(rightX - transform.localScale.x / 6f, middleY);
 
-        StartCoroutine(Shoot());
+        //StartCoroutine(Shoot());
+        ShootManager();
     }
 
     private IEnumerator Shoot()
@@ -58,10 +65,60 @@ public class Pattern : MonoBehaviour
         }
     }
 
+    void ShootManager()
+    {
+        index = Random.Range(0, 3);
+        Transform[] targetTile = new Transform[3];
+
+        SwitchUpdate();
+
+        for (int i = 0; i < 3; i++)
+        {
+            targetTile[i] = tiles[tileIndex + i];
+            StartCoroutine(ChangeTileColor(targetTile[i], Color.red));
+        }
+
+        GameObject projectile = Instantiate(projectilePrefab, spawnPoints[index], Quaternion.identity);
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(0f, -speed);
+
+
+        for (int i = 0; i < 3; i++)
+        {
+            targetTile[i] = tiles[tileIndex + i];
+            StartCoroutine(ChangeTileColor(targetTile[i], Color.white, tileChangeDuration + 1.0f));
+        }
+
+        Invoke("ShootManager", tileChangeDuration + 2f);
+    }
+
+    IEnumerator ChangeTileColor(Transform tile, Color color, float delay = 0f)
+    {
+        yield return new WaitForSeconds(delay);
+        SpriteRenderer tileRenderer = tile.GetComponent<SpriteRenderer>();
+        tileRenderer.color = color;
+    }
+
+    void SwitchUpdate()
+    {
+        switch (index)
+        {
+            case 0:
+                tileIndex = 0;
+                break;
+            case 1:
+                tileIndex = 3;
+                break;
+            case 2:
+                tileIndex = 6;
+                break;
+        }
+    }
+
     public void StartPattern()
     {
         canShoot = true;
-        StartCoroutine(Shoot());
+        ShootManager();
     }
 
     public void StopPattern()
