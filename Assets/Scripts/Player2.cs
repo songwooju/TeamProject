@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player2 : MonoBehaviour
 {
     float time;
     public GameObject prefabBullet;
@@ -112,22 +112,22 @@ public class Player : MonoBehaviour
 
     void PlayerMove()
     {
-        if (Input.GetKey(KeyCode.UpArrow) && !isMoving && currentPos.y < -1)
+        if (Input.GetKey(KeyCode.W) && !isMoving && currentPos.y < -1)
         {
             if (manager.posArray[cPos_y - 1, cPos_x] >= 1) return;
             StartCoroutine(Move(upDirection));
         }
-        if (Input.GetKey(KeyCode.LeftArrow) && !isMoving && currentPos.x > -1)
+        if (Input.GetKey(KeyCode.A) && !isMoving && currentPos.x > -1)
         {
             if (manager.posArray[cPos_y, cPos_x - 1] >= 1) return;
             StartCoroutine(Move(leftDirection));
         }
-        if (Input.GetKey(KeyCode.DownArrow) && !isMoving && currentPos.y > -2)
+        if (Input.GetKey(KeyCode.S) && !isMoving && currentPos.y > -2)
         {
             if (manager.posArray[cPos_y + 1, cPos_x] >= 1) return;
             StartCoroutine(Move(downDirection));
         }
-        if (Input.GetKey(KeyCode.RightArrow) && !isMoving && currentPos.x < 0.5)
+        if (Input.GetKey(KeyCode.D) && !isMoving && currentPos.x < 0.5)
         {
             if (manager.posArray[cPos_y, cPos_x + 1] >= 1) return;
             StartCoroutine(Move(rightDirection));
