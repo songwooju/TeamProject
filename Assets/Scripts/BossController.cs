@@ -11,4 +11,9 @@ public class BossController : MonoBehaviour
     {
         health -= damage;
     }
+
+    public void ApplyDamage(int damage)
+    {
+        health -= damage;
+    }
 }
