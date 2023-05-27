@@ -3,51 +3,26 @@ using System.Collections;
 
 public class PatternController : MonoBehaviour
 {
-    public Pattern pattern1;
-    public Pattern2 pattern2;
-    public float patternDuration = 5f;
-    public float minDelay = 0.5f;
-    public float maxDelay = 2f;
-
-    private bool isRunning = false;
-
-    private void Start()
+    void Start()
     {
-        StartPatternController();
+        BossPattern();
     }
 
-    public void StartPatternController()
+    void BossPattern()
     {
-        if (!isRunning)
+        int randomPatter = Random.Range(0, 2);
+        switch (randomPatter)
         {
-            StartCoroutine(RunPatterns());
+            case 0:
+                GameObject.Find("Circle").GetComponent<Pattern2>().ShootManager2();
+                Debug.Log("0");
+                break;
+            case 1:
+                GameObject.Find("Square").GetComponent<Pattern>().ShootManager();
+                Debug.Log("1");
+                break;
         }
-    }
 
-    public void StopPatternController()
-    {
-        StopAllCoroutines();
-        isRunning = false;
-        pattern1.StopPattern();
-        pattern2.StopPattern();
-    }
-
-    private IEnumerator RunPatterns()
-    {
-        isRunning = true;
-
-        while (isRunning)
-        {
-            pattern1.StartPattern();
-            pattern2.StartPattern();
-
-            float delay = Random.Range(minDelay, maxDelay);
-            yield return new WaitForSeconds(delay);
-
-            pattern1.StopPattern();
-            pattern2.StopPattern();
-
-            yield return new WaitForSeconds(patternDuration - delay);
-        }
+        Invoke("BossPattern", 3f);
     }
 }

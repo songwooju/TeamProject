@@ -25,7 +25,6 @@ public class Manager : MonoBehaviour
     public bool itemBuff = false; // 아이템 효과 적용
     float itemBuffTime = 5.0f; // 아이템 효과 적용 시간
 
-
     private void Awake() // 싱글톤
     {
         if (instance == null)

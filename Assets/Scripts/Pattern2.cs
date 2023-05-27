@@ -11,48 +11,24 @@ public class Pattern2 : MonoBehaviour
     private Color originalColor = Color.white;
     private float distanceThreshold = 0.1f;
 
-    private bool canShoot = true;
+    Transform targetTile;
+    Vector3 targetPosition;
 
-    private void Start()
+    public void ShootManager2()
     {
-        StartPattern();
-    }
+        int randomTileIndex = Random.Range(0, 9);
+        targetTile = tiles[randomTileIndex];
+        targetPosition = targetTile.position;
 
-    public void StartPattern()
-    {
-        canShoot = true;
-        StartCoroutine(ShootPattern());
-    }
+        StartCoroutine(ChangeTileColor(targetTile, Color.red));
 
-    public void StopPattern()
-    {
-        canShoot = false;
-        StopAllCoroutines();
-    }
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+        bulletRb.velocity = (targetPosition - transform.position).normalized * bulletSpeed;
 
-    private IEnumerator ShootPattern()
-    {
-        while (canShoot)
-        {
-            int randomTileIndex = Random.Range(0, tiles.Length);
-            Transform targetTile = tiles[randomTileIndex];
+        StartCoroutine(WaitForBulletArrival(bullet, targetPosition, targetTile));
 
-            StartCoroutine(ChangeTileColor(targetTile, Color.red));
-
-            Vector3 targetPosition = targetTile.position;
-
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-            bulletRb.velocity = (targetPosition - transform.position).normalized * bulletSpeed;
-
-            StartCoroutine(WaitForBulletArrival(bullet, targetPosition, targetTile));
-
-            yield return new WaitForSeconds(tileChangeDuration + 2f);
-
-            StartCoroutine(ChangeTileColor(targetTile, originalColor));
-
-            yield return new WaitForSeconds(tileChangeDuration);
-        }
+        StartCoroutine(ChangeTileColor(targetTile, Color.white, tileChangeDuration + 1.0f));
     }
 
     private IEnumerator ChangeTileColor(Transform tile, Color color, float delay = 0f)

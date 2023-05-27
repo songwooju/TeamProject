@@ -4,18 +4,12 @@ using UnityEngine;
 public class Pattern : MonoBehaviour
 {
     public GameObject projectilePrefab;
-    public int damage = 1;
-    public float speed = 10f;
-    public float fireRate = 1f;
-    public float delayBetweenShots = 0.5f;
-    public float destroyTime = 1.0f;
-    public float Duration;
+    float speed = 1f;
 
-    private bool canShoot = true;
     private Vector2[] spawnPoints;
 
     public Transform[] tiles;
-    private float tileChangeDuration = 1.0f;
+    private float tileChangeDuration = 1.5f;
 
     int index;
     int tileIndex;
@@ -33,39 +27,9 @@ public class Pattern : MonoBehaviour
         spawnPoints[0] = new Vector2(leftX + transform.localScale.x / 6f, middleY);
         spawnPoints[1] = new Vector2(transform.position.x, middleY);
         spawnPoints[2] = new Vector2(rightX - transform.localScale.x / 6f, middleY);
-
-        //StartCoroutine(Shoot());
-        ShootManager();
     }
 
-    private IEnumerator Shoot()
-    {
-        while (true)
-        {
-            while (!canShoot)
-            {
-                yield return null;
-            }
-
-            for (int i = 0; i < 2; i++)
-            {
-                if (projectilePrefab != null)
-                {
-                    GameObject projectile = Instantiate(projectilePrefab, spawnPoints[Random.Range(0, 3)], Quaternion.identity);
-                    Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-                    rb.velocity = new Vector2(0f, -speed);
-
-                    Destroy(projectile, destroyTime);
-                }
-            }
-
-            yield return new WaitForSeconds(delayBetweenShots);
-
-            canShoot = true;
-        }
-    }
-
-    void ShootManager()
+    public void ShootManager()
     {
         index = Random.Range(0, 3);
         Transform[] targetTile = new Transform[3];
@@ -86,10 +50,8 @@ public class Pattern : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             targetTile[i] = tiles[tileIndex + i];
-            StartCoroutine(ChangeTileColor(targetTile[i], Color.white, tileChangeDuration + 1.0f));
+            StartCoroutine(ChangeTileColor(targetTile[i], Color.white, tileChangeDuration));
         }
-
-        Invoke("ShootManager", tileChangeDuration + 2f);
     }
 
     IEnumerator ChangeTileColor(Transform tile, Color color, float delay = 0f)
@@ -113,16 +75,5 @@ public class Pattern : MonoBehaviour
                 tileIndex = 6;
                 break;
         }
-    }
-
-    public void StartPattern()
-    {
-        canShoot = true;
-        ShootManager();
-    }
-
-    public void StopPattern()
-    {
-        canShoot = false;
     }
 }
