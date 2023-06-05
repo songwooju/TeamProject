@@ -15,11 +15,9 @@ public class PatternController : MonoBehaviour
         {
             case 0:
                 GameObject.Find("Circle").GetComponent<Pattern2>().ShootManager2();
-                Debug.Log("0");
                 break;
             case 1:
                 GameObject.Find("Square").GetComponent<Pattern>().ShootManager();
-                Debug.Log("1");
                 break;
         }
 

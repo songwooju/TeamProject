@@ -27,25 +27,29 @@ public class Pattern2 : MonoBehaviour
         bulletRb.velocity = (targetPosition - transform.position).normalized * bulletSpeed;
 
         StartCoroutine(WaitForBulletArrival(bullet, targetPosition, targetTile));
-
-        StartCoroutine(ChangeTileColor(targetTile, Color.white, tileChangeDuration + 1.0f));
     }
 
     private IEnumerator ChangeTileColor(Transform tile, Color color, float delay = 0f)
     {
         yield return new WaitForSeconds(delay);
         SpriteRenderer tileRenderer = tile.GetComponent<SpriteRenderer>();
-        tileRenderer.color = color;
+        if (tileRenderer != null)
+        {
+            tileRenderer.color = color;
+        }
     }
 
     private IEnumerator WaitForBulletArrival(GameObject bullet, Vector3 targetPosition, Transform targetTile)
     {
-        while (Vector3.Distance(bullet.transform.position, targetPosition) > distanceThreshold)
+        while (bullet != null && Vector3.Distance(bullet.transform.position, targetPosition) > distanceThreshold)
         {
             yield return null;
         }
 
-        Destroy(bullet);
-        StartCoroutine(ChangeTileColor(targetTile, originalColor));
+        if (bullet != null)
+        {
+            Destroy(bullet);
+            StartCoroutine(ChangeTileColor(targetTile, originalColor));
+        }
     }
 }

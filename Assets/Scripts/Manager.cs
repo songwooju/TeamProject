@@ -30,18 +30,17 @@ public class Manager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             if (instance != this) Destroy(this.gameObject);
         }
-        Floors = GameObject.FindGameObjectsWithTag("Floor"); // Floor태그를 갖고 있는 오브젝트를 배열로 받아옴.
+
     }
 
     private void Start()
     {
-        //Floors = GameObject.FindGameObjectsWithTag("Floor"); // Floor태그를 갖고 있는 오브젝트를 배열로 받아옴.
+        Floors = GameObject.FindGameObjectsWithTag("Floor"); // Floor태그를 갖고 있는 오브젝트를 배열로 받아옴.
     }
 
     // Update is called once per frame

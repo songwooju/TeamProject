@@ -2,16 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class OnClickMenu : MonoBehaviour
-{   
-    public void OnClickFirstSceneBtn()
+{
+    public AudioSource soundSource;
+    public Sprite[] soundSprite;
+    bool isSoundOn;
+
+    private void Start()
     {
-        SceneManager.LoadScene("FirstScene");
+        GameObject.Find("Canvas").transform.Find("Menu").transform.Find("Sound").GetComponent<Image>().sprite = soundSprite[1];
+        isSoundOn = true;
     }
-    public void OnClickReGameBtn()
+    public void OnClickToSelectSceneBtn()
     {
         SceneManager.LoadScene("PlayerSelectScene");
+    }
+    public void OnClickReStartBtn()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
     public void OnClickOptionBtn() // 옵션버튼 눌렀을 때 작동 정지
     {
@@ -20,5 +30,20 @@ public class OnClickMenu : MonoBehaviour
     public void MenuBtnOutn() // 옵션버튼 나가면 작동
     {
         Time.timeScale = 1;
+    }
+    public void SetSoundVolume()
+    {
+        if (isSoundOn) // 소리가 켜져있다면 끄도록
+        {
+            soundSource.volume = 0.0f;
+            GameObject.Find("Canvas").transform.Find("Menu").transform.Find("Sound").GetComponent<Image>().sprite = soundSprite[0];
+            isSoundOn = false;
+        }
+        else if (!isSoundOn) // 소리가 꺼져있다면 켜지도록
+        {
+            soundSource.volume = 1.0f;
+            GameObject.Find("Canvas").transform.Find("Menu").transform.Find("Sound").GetComponent<Image>().sprite = soundSprite[1];
+            isSoundOn = true;
+        }
     }
 }
