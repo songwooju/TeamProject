@@ -10,7 +10,7 @@ public class PatternController : MonoBehaviour
 
     void BossPattern()
     {
-        int randomPatter = Random.Range(0, 2);
+        int randomPatter = Random.Range(0, 3);
         switch (randomPatter)
         {
             case 0:
@@ -18,6 +18,9 @@ public class PatternController : MonoBehaviour
                 break;
             case 1:
                 GameObject.Find("Square").GetComponent<Pattern>().ShootManager();
+                break;
+            case 2:
+                GameObject.Find("Capsule").GetComponent<Pattern3>().ShootManager3();
                 break;
         }
 
