@@ -17,7 +17,7 @@ public class Pattern3 : MonoBehaviour
 
     public void ShootManager3()
     {
-        int randomTileIndex = Random.Range(0, 6);
+        int randomTileIndex = Random.Range(0, 3);
 
         bool isSquare = (randomTileIndex % 3 != 2) && (randomTileIndex < 6);
 
