@@ -11,9 +11,19 @@ public class BossAttackController : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Player player = collision.gameObject.GetComponent<Player>();
+            Player2 player2 = collision.gameObject.GetComponent<Player2>();
             if (player != null)
             {
                 player.TakeDamage(damageAmount);
+                Destroy(gameObject);
+                if (GameManager.instance.sharedCurrentHealth <= 0)
+                {
+                    Destroy(collision.gameObject);
+                }
+            }
+            else if (player2 != null)
+            {
+                player2.TakeDamage(damageAmount);
                 Destroy(gameObject);
                 if (GameManager.instance.sharedCurrentHealth <= 0)
                 {
