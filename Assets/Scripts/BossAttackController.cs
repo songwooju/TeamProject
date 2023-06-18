@@ -6,6 +6,16 @@ public class BossAttackController : MonoBehaviour
 {
     public int damageAmount = 1; // ÇÇÇØ·®
 
+    private void Start()
+    {
+        Invoke("DestroyGameObject", 1.5f);
+    }
+
+    private void DestroyGameObject()
+    {
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
