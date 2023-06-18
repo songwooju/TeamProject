@@ -9,4 +9,10 @@ public class FirstSceneManager : MonoBehaviour
     {
         SceneManager.LoadScene("PlayerSelectScene");
     }
+
+    public void GameExit()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
+    }
 }
