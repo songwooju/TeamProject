@@ -48,6 +48,7 @@ public class Pattern2 : MonoBehaviour
 
         if (bullet != null)
         {
+            GameManager.instance.isAvoidPattern = true;
             Destroy(bullet);
             StartCoroutine(ChangeTileColor(targetTile, originalColor));
         }

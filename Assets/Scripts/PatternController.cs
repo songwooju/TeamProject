@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PatternController : MonoBehaviour
 {
+    public bool isPattern = false;
     void Start()
     {
         BossPattern();
@@ -10,6 +11,7 @@ public class PatternController : MonoBehaviour
 
     void BossPattern()
     {
+        GameManager.instance.beforePatternHP = GameManager.instance.sharedCurrentHealth;
         int randomPatter = Random.Range(0, 3);
         switch (randomPatter)
         {
@@ -23,7 +25,6 @@ public class PatternController : MonoBehaviour
                 GameObject.Find("Capsule").GetComponent<Pattern3>().ShootManager3();
                 break;
         }
-
         Invoke("BossPattern", 3f);
     }
 }

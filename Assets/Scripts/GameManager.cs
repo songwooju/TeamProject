@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public int sharedMaxHealth = 10;
+    public int sharedMaxHealth = 3;
     public int sharedCurrentHealth;
     public int sharedMP;
 
     public Sprite[] playerHpSprite;
     public Slider mpBar;
-    float testMp = 90;
+    float testMp = 0; 
+    public int beforePatternHP;
+    public bool isAvoidPattern = false;
 
     public static GameManager instance;
 
@@ -30,24 +32,20 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         sharedCurrentHealth = sharedMaxHealth;
-        PlayerHpBarUpdate();
     }
 
     private void Update()
     {
-        //PlayerHpBarUpdate();
+        PlayerHpBarUpdate();
         MPUpdate();
     }
 
     void PlayerHpBarUpdate()
     {
-        int random = Random.Range(0, 4);
-        Debug.Log(random);
-
-        switch (random) // random 말고 sharedCurrentHealth 들어갈 예정, start말고 update에 추가해야함
+        switch (sharedCurrentHealth) 
         {
             case 3:
-                GameObject.Find("HP3").GetComponent<Image>().sprite = playerHpSprite[0];
+                GameObject.Find("HP3").GetComponent<Image>().sprite = playerHpSprite[1];
                 GameObject.Find("HP2").GetComponent<Image>().sprite = playerHpSprite[1];
                 GameObject.Find("HP1").GetComponent<Image>().sprite = playerHpSprite[1];
                 break;
@@ -70,18 +68,23 @@ public class GameManager : MonoBehaviour
                 GameObject.Find("HP1").GetComponent<Image>().sprite = playerHpSprite[0];
                 break;
         }
-
-        Invoke("PlayerHpBarUpdate", 1f);
     }
 
     void MPUpdate()
     {
-        if (testMp <= 100f)
+        mpBar.value = testMp / 100f;
+        if (isAvoidPattern)
         {
-            testMp += Time.deltaTime;
-            mpBar.value = testMp / 100f;
+            if (beforePatternHP != sharedCurrentHealth)
+            {
+                isAvoidPattern = false;
+                return;
+            }
+            testMp += 20.0f;
+            Debug.Log(testMp);
+            isAvoidPattern = false;
         }
-        else
-            testMp = 0.0f;
+
+        if (testMp > 100.0f) testMp = 0.0f;
     }
 }

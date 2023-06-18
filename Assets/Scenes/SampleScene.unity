@@ -617,13 +617,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a69fd9b1613984b89cbf07b74c843f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedMaxHealth: 10
+  sharedMaxHealth: 3
   sharedCurrentHealth: 0
   sharedMP: 0
   playerHpSprite:
   - {fileID: 21300000, guid: cfe580ca9ff433e428e2934eed937bba, type: 3}
   - {fileID: 21300000, guid: 491bcd15e452e7c4480c51b2dbea2dea, type: 3}
   mpBar: {fileID: 862768106}
+  beforePatternHP: 0
+  isAvoidPattern: 0
 --- !u!4 &381767850
 Transform:
   m_ObjectHideFlags: 0
@@ -1188,6 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad6be853b91f2f41aa275679f6e4970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPattern: 0
 --- !u!82 &587396339
 AudioSource:
   m_ObjectHideFlags: 0
