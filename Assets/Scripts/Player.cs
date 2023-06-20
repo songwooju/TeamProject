@@ -94,9 +94,7 @@ public class Player : MonoBehaviour
         if (gameManager != null && gameManager.sharedCurrentHealth <= 0)
         {
             animator.SetBool("IsDie", true);
-            StartCoroutine(DisableCharacter());
-            GameOverUI.SetActive(true);
-            PauseGame();
+            StartCoroutine(GameOverRoutine());
         }
     }
 
@@ -192,16 +190,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    private IEnumerator DisableCharacter()
+    private IEnumerator GameOverRoutine()
     {
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.5f);
 
-        gameObject.SetActive(false);
+        Time.timeScale = 0f;
+        isGamePaused = true;
+        GameOverUI.SetActive(true);
     }
 
     public void OnGameOverButtonClick()
     {
-        ResumeGame();
+        Time.timeScale = 1f;
+        isGamePaused = false;
         SceneManager.LoadScene("FirstScene");
     }
 
