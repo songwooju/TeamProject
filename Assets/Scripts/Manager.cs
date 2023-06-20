@@ -23,6 +23,7 @@ public class Manager : MonoBehaviour
     public int currentObjectCount = 0; // 현재 생성된 오브젝트 수, Player가 아이템을 먹으면 0으로 만듦
 
     public bool itemBuff = false; // 아이템 효과 적용
+    public bool itemBuffHP = false; // 아이템 효과, 먹으면 체력 증가
     float itemBuffTime = 5.0f; // 아이템 효과 적용 시간
 
     private void Awake() // 싱글톤
@@ -52,6 +53,7 @@ public class Manager : MonoBehaviour
         ItemRandomPos();
         ItemSqwanTime();
         ItemBuffTime();
+        ItemBuffHP();
     }
 
     private GameObject GetClickedObject()
@@ -99,6 +101,20 @@ public class Manager : MonoBehaviour
                 itemBuff = false;
                 itemBuffTime = 5.0f;
             }
+        }
+    }
+
+    void ItemBuffHP() // 2번 아이템을 먹고 체력이 2이하라면 체력 1 증가
+    {
+        if (itemBuffHP)
+        {
+            if (GameManager.instance.sharedCurrentHealth <= 2)
+            {
+                GameManager.instance.sharedCurrentHealth += 1;
+                itemBuffHP = false;
+                return;
+            }
+            else return;
         }
     }
 }

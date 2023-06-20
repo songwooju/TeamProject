@@ -78,7 +78,15 @@ public class Player2 : MonoBehaviour
                 manager.currentObjectCount = 0;
                 manager.itemBuff = true;
             }
-
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Item2"))
+        {
+            if (manager != null)
+            {
+                manager.currentObjectCount = 0;
+                manager.itemBuffHP = true;
+            }
             Destroy(collision.gameObject);
         }
     }

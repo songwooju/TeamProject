@@ -8,6 +8,7 @@ TagManager:
   - Projectile
   - Floor
   - Item
+  - Item2
   layers:
   - Default
   - TransparentFX

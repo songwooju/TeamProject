@@ -13,6 +13,7 @@ public class BossAttackController : MonoBehaviour
 
     private void DestroyGameObject()
     {
+        GameManager.instance.isAvoidPattern = true;
         Destroy(gameObject);
     }
 
