@@ -7,6 +7,6 @@ public class SelectSceneManager : MonoBehaviour
 {
     public void SceneChange()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Stage1");
     }
 }

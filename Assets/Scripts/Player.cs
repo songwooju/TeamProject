@@ -1,14 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     float time;
     public GameObject prefabBullet;
+    private bool IsDie = false;
+    public GameObject GameOverUI;
+
+    public bool isGamePaused = false;
+
 
     private GameManager gameManager;
     private Manager manager;
+    private Animator animator;
 
     bool isMoving; // 움직이고 있는지
     Vector3 originPos, targetPos; // 원래 위치, 목표 위치
@@ -28,6 +36,7 @@ public class Player : MonoBehaviour
     {
         gameManager = GameManager.instance;
         manager = Manager.instance;
+        animator = GetComponent<Animator>();
 
         if (gameManager != null)
         {
@@ -84,7 +93,10 @@ public class Player : MonoBehaviour
     {
         if (gameManager != null && gameManager.sharedCurrentHealth <= 0)
         {
-            Destroy(gameObject);
+            animator.SetBool("IsDie", true);
+            StartCoroutine(DisableCharacter());
+            GameOverUI.SetActive(true);
+            PauseGame();
         }
     }
 
@@ -178,6 +190,31 @@ public class Player : MonoBehaviour
             else if (currentPos.x > 0)
                 cPos_x = 2;
         }
+    }
+
+    private IEnumerator DisableCharacter()
+    {
+        yield return new WaitForSeconds(0.7f);
+
+        gameObject.SetActive(false);
+    }
+
+    public void OnGameOverButtonClick()
+    {
+        ResumeGame();
+        SceneManager.LoadScene("FirstScene");
+    }
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0f;
+        isGamePaused = true;
+    }
+
+    private void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        isGamePaused = false;
     }
 }
 

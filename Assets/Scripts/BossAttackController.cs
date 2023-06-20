@@ -26,19 +26,11 @@ public class BossAttackController : MonoBehaviour
             {
                 player.TakeDamage(damageAmount);
                 Destroy(gameObject);
-                if (GameManager.instance.sharedCurrentHealth <= 0)
-                {
-                    Destroy(collision.gameObject);
-                }
             }
             else if (player2 != null)
             {
                 player2.TakeDamage(damageAmount);
                 Destroy(gameObject);
-                if (GameManager.instance.sharedCurrentHealth <= 0)
-                {
-                    Destroy(collision.gameObject);
-                }
             }
         }
     }

@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/PlayerSelectScene.unity
     guid: 6c718ad08e2d35c47be51073ceea0fcb
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/StageChange.unity
+    guid: 9725c1ba1fa43614d84ac2ce8f2eb32f
+  - enabled: 1
+    path: Assets/Scenes/Stage1.unity
+    guid: 0dbfd3b4b4f091d4a91fcd911f52660d
+  - enabled: 1
+    path: Assets/Scenes/StoryScene.unity
+    guid: e81a3ead1c76f4c4bbb2270d71bf9881
   m_configObjects: {}

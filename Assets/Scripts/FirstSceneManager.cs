@@ -7,7 +7,7 @@ public class FirstSceneManager : MonoBehaviour
 {
     public void SceneChange()
     {
-        SceneManager.LoadScene("PlayerSelectScene");
+        SceneManager.LoadScene("StoryScene");
     }
 
     public void GameExit()

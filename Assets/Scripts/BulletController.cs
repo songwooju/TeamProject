@@ -9,14 +9,20 @@ public class BulletController : MonoBehaviour
 
     private int damage = 1; // 총알의 데미지
 
-    // Start is called before the first frame update
+    private Rigidbody2D bulletRigidbody;
+
     void Start()
     {
         speed = 10.0f;
-        bossTransform = GameObject.FindGameObjectWithTag("Boss").transform;
+        GameObject bossObject = GameObject.FindGameObjectWithTag("Boss");
+        if (bossObject != null)
+        {
+            bossTransform = bossObject.transform;
+        }
+
+        bulletRigidbody = GetComponent<Rigidbody2D>(); // Rigidbody2D 컴포넌트 가져오기
     }
 
-    // Update is called once per frame
     void Update()
     {
         FireBullet();
@@ -26,8 +32,11 @@ public class BulletController : MonoBehaviour
 
     void FireBullet()
     {
-        Vector3 direction = (bossTransform.position - transform.position).normalized;
-        transform.Translate(direction * speed * Time.deltaTime);
+        if (bossTransform != null)
+        {
+            Vector2 direction = (bossTransform.position - transform.position).normalized;
+            bulletRigidbody.velocity = direction * speed; // Rigidbody2D의 velocity 속성을 이용하여 이동
+        }
     }
 
     void DestroyBullet()
@@ -48,7 +57,7 @@ public class BulletController : MonoBehaviour
                 boss.TakeDamage(damage); // 보스의 체력을 감소시킴
                 if (boss.health <= 0) // 보스의 체력이 0 이하일 경우
                 {
-                    Destroy(collision.gameObject); // 보스를 파괴함
+                    boss.Die(); // 보스를 파괴함
                 }
             }
             Destroy(gameObject); // 총알을 파괴함
@@ -66,5 +75,4 @@ public class BulletController : MonoBehaviour
             damage = 10;
         }
     }
-
 }
