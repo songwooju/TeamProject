@@ -7,7 +7,6 @@ public class Pattern3 : MonoBehaviour
     public GameObject bulletPrefab;
 
     private float bulletSpeed = 5f;
-    private float tileChangeDuration = 1.0f;
     private Color originalColor = Color.white;
     private Color bulletArrivalColor = Color.red;
     private float distanceThreshold = 0.1f;

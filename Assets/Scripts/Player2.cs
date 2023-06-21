@@ -6,7 +6,6 @@ public class Player2 : MonoBehaviour
 {
     float time;
     public GameObject prefabBullet;
-    private bool IsDie = false;
 
     private GameManager gameManager;
     private Manager manager;

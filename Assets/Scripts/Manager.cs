@@ -108,13 +108,17 @@ public class Manager : MonoBehaviour
     {
         if (itemBuffHP)
         {
-            if (GameManager.instance.sharedCurrentHealth <= 2)
+            if (GameManager.instance.sharedCurrentHealth == 3)
+            {
+                itemBuffHP = false;
+                return;
+            }
+            else if (GameManager.instance.sharedCurrentHealth < 3)
             {
                 GameManager.instance.sharedCurrentHealth += 1;
                 itemBuffHP = false;
                 return;
             }
-            else return;
         }
     }
 }

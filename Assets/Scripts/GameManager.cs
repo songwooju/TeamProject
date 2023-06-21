@@ -81,7 +81,6 @@ public class GameManager : MonoBehaviour
                 return;
             }
             testMp += 20.0f;
-            Debug.Log(testMp);
             isAvoidPattern = false;
         }
 

@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
 {
     float time;
     public GameObject prefabBullet;
-    private bool IsDie = false;
     public GameObject GameOverUI;
 
     public bool isGamePaused = false;
