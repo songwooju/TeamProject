@@ -16,7 +16,7 @@ public class Pattern4 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MakeAnCanNotBeMovedTile();
+        Invoke("MakeAnCanNotBeMovedTile", 2f);
     }
     void MakeAnCanNotBeMovedTile()
     {

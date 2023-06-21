@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public GameObject prefabBullet;
     public GameObject GameOverUI;
 
-    public bool isGamePaused = false;
+    //public bool isGamePaused = false;
 
 
     private GameManager gameManager;
@@ -101,7 +101,8 @@ public class Player : MonoBehaviour
         if (gameManager != null && gameManager.sharedCurrentHealth <= 0)
         {
             animator.SetBool("IsDie", true);
-            StartCoroutine(GameOverRoutine());
+            //StartCoroutine(GameOverRoutine());
+            GameOver();
         }
     }
 
@@ -202,27 +203,19 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         Time.timeScale = 0f;
-        isGamePaused = true;
+        GameOverUI.SetActive(true);
+    }
+
+    void GameOver()
+    {
+        Time.timeScale = 0f;
         GameOverUI.SetActive(true);
     }
 
     public void OnGameOverButtonClick()
     {
         Time.timeScale = 1f;
-        isGamePaused = false;
         SceneManager.LoadScene("FirstScene");
-    }
-
-    private void PauseGame()
-    {
-        Time.timeScale = 0f;
-        isGamePaused = true;
-    }
-
-    private void ResumeGame()
-    {
-        Time.timeScale = 1f;
-        isGamePaused = false;
     }
 }
 
