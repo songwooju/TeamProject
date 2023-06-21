@@ -1137,6 +1137,7 @@ GameObject:
   - component: {fileID: 587396337}
   - component: {fileID: 587396336}
   - component: {fileID: 587396338}
+  - component: {fileID: 587396340}
   - component: {fileID: 587396339}
   m_Layer: 0
   m_Name: GameManager
@@ -1165,6 +1166,7 @@ MonoBehaviour:
   - {fileID: 1387697830987175008, guid: 4a12d79769994d145bb2a0d9ca051f45, type: 3}
   currentObjectCount: 0
   itemBuff: 1
+  itemBuffHP: 0
 --- !u!4 &587396337
 Transform:
   m_ObjectHideFlags: 0
@@ -1289,6 +1291,39 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &587396340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587396335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76cfaf67e81f06f4b935453c49f27878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 743195863}
+  - {fileID: 170077274}
+  - {fileID: 1552754454}
+  - {fileID: 1562398849}
+  - {fileID: 437084686}
+  - {fileID: 513917928}
+  - {fileID: 1067650961}
+  - {fileID: 543703343}
+  - {fileID: 1956235462}
+  tileSprite:
+  - {fileID: 21300000, guid: 1815699906f7cb848b2a316cf8bbb79e, type: 3}
+  - {fileID: 21300000, guid: df1ae728b6b6e1c49965cb2d06d85153, type: 3}
+  - {fileID: 21300000, guid: 0f0cff729078a384eab49f8f49e5c64c, type: 3}
+  - {fileID: 21300000, guid: 950b913e0ac720345a3a8bc121f481a1, type: 3}
+  - {fileID: 21300000, guid: 86cf6d0844c897944ab812b2cd8d26a2, type: 3}
+  - {fileID: 21300000, guid: 8f57d397f5ae15d49877cb4c25b332e5, type: 3}
+  - {fileID: 21300000, guid: 0ec35d93abb3ade498c71319e9274e7f, type: 3}
+  - {fileID: 21300000, guid: ba13962636535e041a8715011b1867d2, type: 3}
+  - {fileID: 21300000, guid: c9d0388355dcfb941a2e4c4af9bb5cb0, type: 3}
+  - {fileID: 7482667652216324306, guid: 0e5d9fa39bf4969429c7e844f797c4fc, type: 3}
 --- !u!1 &743195861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,7 +1541,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 06ef9835788db7549968a6dcd411a1c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2747,7 +2782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4414fd90f4f40044aa6c97d8b7236038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 1000
   bossHpBar: {fileID: 2007537942}
   stageClearUI: {fileID: 2000231103}
   isGamePaused: 0

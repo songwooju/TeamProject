@@ -9,6 +9,7 @@ public class Pattern4 : MonoBehaviour
 
     int xPos = 0;
     int yPos = 0;
+    int randomTileIndex;
 
     public Sprite[] tileSprite;
 
@@ -31,14 +32,14 @@ public class Pattern4 : MonoBehaviour
         SpriteRenderer tileRenderer = tile.GetComponent<SpriteRenderer>();
         if (tileRenderer != null)
         {
-            tileRenderer.sprite = tileSprite[0];
+            tileRenderer.sprite = tileSprite[randomTileIndex];
         }
         Manager.instance.posArray[yPos, xPos] = 0;
     }
 
     void ChooseRandomTile()
     {
-        int randomTileIndex = Random.Range(0, 9);
+        randomTileIndex = Random.Range(0, 9);
         CheckPosArray(randomTileIndex);
 
         while (Manager.instance.posArray[yPos, xPos] == 1)
@@ -49,7 +50,7 @@ public class Pattern4 : MonoBehaviour
 
         targetTile = tiles[randomTileIndex];
         SpriteRenderer tileRenderer = targetTile.GetComponent<SpriteRenderer>();
-        tileRenderer.sprite = tileSprite[1];
+        tileRenderer.sprite = tileSprite[9];
         Manager.instance.posArray[yPos, xPos] = 2;
     }
 
