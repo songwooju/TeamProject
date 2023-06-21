@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     void PlayerHpBarUpdate()
     {
         switch (sharedCurrentHealth) 
-        {
+        { 
             case 3:
                 GameObject.Find("HP3").GetComponent<Image>().sprite = playerHpSprite[1];
                 GameObject.Find("HP2").GetComponent<Image>().sprite = playerHpSprite[1];
