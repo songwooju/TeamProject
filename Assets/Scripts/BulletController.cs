@@ -60,7 +60,7 @@ public class BulletController : MonoBehaviour
                     boss.Die(); // º¸½º¸¦ ÆÄ±«ÇÔ
                 }
             }
-            Destroy(gameObject); // ÃÑ¾ËÀ» ÆÄ±«ÇÔ
+            //Destroy(gameObject); // ÃÑ¾ËÀ» ÆÄ±«ÇÔ
         }
     }
 

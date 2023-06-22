@@ -710,7 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a69fd9b1613984b89cbf07b74c843f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedMaxHealth: 5
+  sharedMaxHealth: 3
   sharedCurrentHealth: 0
   sharedMP: 0
   playerHpSprite:
