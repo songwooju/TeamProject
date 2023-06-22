@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     public Sprite[] playerHpSprite;
     public Slider mpBar;
-    float testMp = 0; 
+    public float testMp = 0; 
     public int beforePatternHP;
     public bool isAvoidPattern = false;
 
@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour
 
     void MPUpdate()
     {
+        if (testMp >= 100.0f) return; // 마나가 이미 100 이상인 경우 증가를 멈춥니다.
+
         mpBar.value = testMp / 100f;
         if (isAvoidPattern)
         {
@@ -84,6 +86,6 @@ public class GameManager : MonoBehaviour
             isAvoidPattern = false;
         }
 
-        if (testMp > 100.0f) testMp = 0.0f;
+        if (testMp > 100.0f) testMp = 100.0f; // 마나가 100을 초과하지 않도록 설정합니다.
     }
 }
