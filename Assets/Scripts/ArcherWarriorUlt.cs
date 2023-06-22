@@ -6,29 +6,46 @@ public class ArcherWarriorUlt : MonoBehaviour
 {
     public GameObject popupPanel;
     public float popupDuration = 3f;
-    public GameObject bossObject;
-    public int damageAmount = 100;
 
     private bool isPopupShowing = false;
+    private bool isGamePaused = false;
+
+    private GameManager gameManager; // GameManager 참조를 저장할 변수
+    private BossController bossController; // BossController 참조를 저장할 변수
 
     private void Start()
     {
         popupPanel.SetActive(false);
+
+        gameManager = GameManager.instance;
+        bossController = FindObjectOfType<BossController>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (gameManager != null && gameManager.testMp >= 100)
         {
-            if (!isPopupShowing)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                StartCoroutine(ShowPopup());
+                if (!isPopupShowing)
+                {
+                    StartCoroutine(ShowPopup());
+                }
             }
         }
     }
 
     private IEnumerator ShowPopup()
     {
+        if (popupPanel == null)
+        {
+            yield break;
+        }
+
+        // 게임을 일시정지합니다.
+        Time.timeScale = 0f;
+        isGamePaused = true;
+
         popupPanel.SetActive(true);
         isPopupShowing = true;
 
@@ -37,13 +54,16 @@ public class ArcherWarriorUlt : MonoBehaviour
         popupPanel.SetActive(false);
         isPopupShowing = false;
 
-        if (bossObject != null)
+        // 보스의 체력을 100 감소시킵니다.
+        if (bossController != null)
         {
-            BossController bossHealth = bossObject.GetComponent<BossController>();
-            if (bossHealth != null)
-            {
-                bossHealth.TakeDamage(damageAmount);
-            }
+            bossController.TakeDamage(500);
         }
+
+        // 게임을 다시 재개합니다.
+        Time.timeScale = 1f;
+        isGamePaused = false;
+
+        gameManager.testMp = 0;
     }
 }
