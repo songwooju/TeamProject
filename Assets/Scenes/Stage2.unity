@@ -1515,12 +1515,12 @@ GameObject:
   - component: {fileID: 633146655}
   - component: {fileID: 633146654}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Panel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &633146654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3348,7 +3348,7 @@ GameObject:
   - component: {fileID: 1679826192}
   - component: {fileID: 1679826191}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3386,7 +3386,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d91aa1a6a83bc23479b9b82d5261b865, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -3506,7 +3506,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Stage1 Clear
+  m_Text: Stage2 Clear
 --- !u!114 &1774458193
 MonoBehaviour:
   m_ObjectHideFlags: 0

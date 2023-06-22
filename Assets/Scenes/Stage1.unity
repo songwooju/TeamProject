@@ -215,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupPanel: {fileID: 39417618}
   popupDuration: 3
+  isPopupShowing: 0
 --- !u!1 &90675908
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,7 +3097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4414fd90f4f40044aa6c97d8b7236038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10000
+  health: 100
   bossHpBar: {fileID: 2007537942}
   stageClearUI: {fileID: 2000231103}
   isGamePaused: 0
@@ -4082,6 +4083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupPanel: {fileID: 39417618}
   popupDuration: 3
+  isPopupShowing: 0
 --- !u!4 &2145987005
 Transform:
   m_ObjectHideFlags: 0

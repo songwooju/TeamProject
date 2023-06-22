@@ -7,11 +7,12 @@ public class ArcherWarriorUlt : MonoBehaviour
     public GameObject popupPanel;
     public float popupDuration = 3f;
 
-    private bool isPopupShowing = false;
+    public bool isPopupShowing = false;
     private bool isGamePaused = false;
 
-    private GameManager gameManager; // GameManager 참조를 저장할 변수
-    private BossController bossController; // BossController 참조를 저장할 변수
+    private GameManager gameManager;
+    private BossController bossController;
+    
 
     private void Start()
     {
@@ -42,7 +43,7 @@ public class ArcherWarriorUlt : MonoBehaviour
             yield break;
         }
 
-        // 게임을 일시정지합니다.
+
         Time.timeScale = 0f;
         isGamePaused = true;
 
@@ -54,13 +55,11 @@ public class ArcherWarriorUlt : MonoBehaviour
         popupPanel.SetActive(false);
         isPopupShowing = false;
 
-        // 보스의 체력을 100 감소시킵니다.
         if (bossController != null)
         {
             bossController.TakeDamage(500);
         }
 
-        // 게임을 다시 재개합니다.
         Time.timeScale = 1f;
         isGamePaused = false;
 
