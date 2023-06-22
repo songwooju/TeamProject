@@ -26,6 +26,8 @@ public class Manager : MonoBehaviour
     public bool itemBuffHP = false; // 아이템 효과, 먹으면 체력 증가
     float itemBuffTime = 5.0f; // 아이템 효과 적용 시간
 
+    public bool isBossAttack; // 보스 애니메이션 적용을 위한 변수
+
     private void Awake() // 싱글톤
     {
         if (instance == null)

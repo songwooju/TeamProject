@@ -13,6 +13,7 @@ public class PatternController : MonoBehaviour
     {
         GameManager.instance.beforePatternHP = GameManager.instance.sharedCurrentHealth;
         int randomPatter = Random.Range(0, 3);
+        Manager.instance.isBossAttack = true;
         switch (randomPatter)
         {
             case 0:

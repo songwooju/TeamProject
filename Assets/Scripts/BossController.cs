@@ -10,8 +10,14 @@ public class BossController : MonoBehaviour
 
     public Slider bossHpBar;
     public GameObject stageClearUI;
+    private Animator animator;
 
     public bool isGamePaused = false;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -19,6 +25,13 @@ public class BossController : MonoBehaviour
         {
             BossHpBarUpdate();
         }
+
+        if (Manager.instance.isBossAttack)
+        {
+            animator.SetTrigger("attack");
+            Manager.instance.isBossAttack = false;
+        }
+        // animator.SetBool("attack", false);
     }
 
     public void TakeDamage(int damage)

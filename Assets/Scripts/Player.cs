@@ -101,8 +101,7 @@ public class Player : MonoBehaviour
         if (gameManager != null && gameManager.sharedCurrentHealth <= 0)
         {
             animator.SetBool("IsDie", true);
-            //StartCoroutine(GameOverRoutine());
-            GameOver();
+            StartCoroutine(GameOverRoutine());
         }
     }
 
@@ -202,12 +201,6 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        Time.timeScale = 0f;
-        GameOverUI.SetActive(true);
-    }
-
-    void GameOver()
-    {
         Time.timeScale = 0f;
         GameOverUI.SetActive(true);
     }
