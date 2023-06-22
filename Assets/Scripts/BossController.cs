@@ -77,6 +77,13 @@ public class BossController : MonoBehaviour
         SceneManager.LoadScene("StageChange");
     }
 
+
+    public void IsGameClear()
+    {
+        ResumeGame();
+        SceneManager.LoadScene("ClearScene");
+    }
+
     private void PauseGame()
     {
         Time.timeScale = 0f;

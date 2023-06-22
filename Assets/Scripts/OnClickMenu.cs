@@ -46,9 +46,4 @@ public class OnClickMenu : MonoBehaviour
             isSoundOn = true;
         }
     }
-
-    public void IsGameClear()
-    {
-        SceneManager.LoadScene("ClearScene");
-    }
 }

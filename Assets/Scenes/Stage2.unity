@@ -458,8 +458,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 61.2822, y: 70.2702}
+  m_AnchoredPosition: {x: 0, y: 2.6476}
+  m_SizeDelta: {x: 61.2822, y: 75.5654}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &241329858
 MonoBehaviour:
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cfe580ca9ff433e428e2934eed937bba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3180b09daeea364d9cfac5ba330c979, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -664,14 +664,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a69fd9b1613984b89cbf07b74c843f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedMaxHealth: 1
+  sharedMaxHealth: 3
   sharedCurrentHealth: 0
   sharedMP: 0
   playerHpSprite:
   - {fileID: 21300000, guid: cfe580ca9ff433e428e2934eed937bba, type: 3}
   - {fileID: 21300000, guid: 491bcd15e452e7c4480c51b2dbea2dea, type: 3}
   mpBar: {fileID: 862768106}
-  testMp: 100
+  testMp: 0
   beforePatternHP: 0
   isAvoidPattern: 0
 --- !u!4 &381767850
@@ -1722,8 +1722,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: cfe69f95c7a18c74ab0ca6300e3deb01, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2675,8 +2675,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25, y: 0}
   m_AnchorMax: {x: 0.75, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -10}
+  m_AnchoredPosition: {x: -0.6618004, y: 0.00002670288}
+  m_SizeDelta: {x: -13.2381, y: -10.00005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1306181169
 GameObject:
@@ -3537,9 +3537,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1306181174}
         m_TargetAssemblyTypeName: BossController, Assembly-CSharp
-        m_MethodName: OnStageClearButtonClick
+        m_MethodName: IsGameClear
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
