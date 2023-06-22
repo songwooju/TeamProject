@@ -199,7 +199,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator GameOverRoutine()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
 
         Time.timeScale = 0f;
         GameOverUI.SetActive(true);

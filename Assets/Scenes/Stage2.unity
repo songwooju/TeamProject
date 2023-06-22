@@ -530,6 +530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupPanel: {fileID: 633146653}
   popupDuration: 3
+  isPopupShowing: 0
 --- !u!4 &257670941
 Transform:
   m_ObjectHideFlags: 0
@@ -663,14 +664,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a69fd9b1613984b89cbf07b74c843f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedMaxHealth: 3
+  sharedMaxHealth: 1
   sharedCurrentHealth: 0
   sharedMP: 0
   playerHpSprite:
   - {fileID: 21300000, guid: cfe580ca9ff433e428e2934eed937bba, type: 3}
   - {fileID: 21300000, guid: 491bcd15e452e7c4480c51b2dbea2dea, type: 3}
   mpBar: {fileID: 862768106}
-  testMp: 0
+  testMp: 100
   beforePatternHP: 0
   isAvoidPattern: 0
 --- !u!4 &381767850
@@ -1513,7 +1514,6 @@ GameObject:
   - component: {fileID: 633146657}
   - component: {fileID: 633146656}
   - component: {fileID: 633146655}
-  - component: {fileID: 633146654}
   m_Layer: 5
   m_Name: Panel2
   m_TagString: Untagged
@@ -1521,20 +1521,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &633146654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 633146653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec4a00f292cd86f439290358def33f1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popupPanel: {fileID: 633146653}
-  popupDuration: 3
 --- !u!114 &633146655
 MonoBehaviour:
   m_ObjectHideFlags: 0
