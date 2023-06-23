@@ -7,16 +7,16 @@ public class SelectSceneManager : MonoBehaviour
 {
     public void SceneChange()
     {
-        SceneManager.LoadScene("Stage1");
+        SceneManager.LoadScene("Stage1AW");
     }
 
     public void SceneChange2()
     {
-        SceneManager.LoadScene("Stage1_Warrior_Socerer");
+        SceneManager.LoadScene("Stage1WS");
     }
 
     public void SceneChange3()
     {
-        SceneManager.LoadScene("Stage1_Archer_Socerer");
+        SceneManager.LoadScene("Stage1AS");
     }
 }

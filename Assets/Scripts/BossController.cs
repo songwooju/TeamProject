@@ -74,7 +74,19 @@ public class BossController : MonoBehaviour
     public void OnStageClearButtonClick()
     {
         ResumeGame();
-        SceneManager.LoadScene("StageChange");
+        SceneManager.LoadScene("StageChangeAW");
+    }
+
+    public void OnStageClearButtonClick1()
+    {
+        ResumeGame();
+        SceneManager.LoadScene("StageChangeAS");
+    }
+
+    public void OnStageClearButtonClick2()
+    {
+        ResumeGame();
+        SceneManager.LoadScene("StageChangeWS");
     }
 
 

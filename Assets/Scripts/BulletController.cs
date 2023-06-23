@@ -35,6 +35,9 @@ public class BulletController : MonoBehaviour
         if (bossTransform != null)
         {
             Vector2 direction = (bossTransform.position - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            angle -= 75f; // 회전 각도에 45도를 뺀 값으로 수정
+            bulletRigidbody.rotation = angle; // 총알의 회전을 방향에 따라 설정
             bulletRigidbody.velocity = direction * speed; // Rigidbody2D의 velocity 속성을 이용하여 이동
         }
     }

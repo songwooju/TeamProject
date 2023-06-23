@@ -9,26 +9,38 @@ EditorBuildSettings:
     path: Assets/Scenes/FirstScene.unity
     guid: 85033458b6bcd25499d0f4662af59145
   - enabled: 1
-    path: Assets/Scenes/PlayerSelectScene.unity
-    guid: 6c718ad08e2d35c47be51073ceea0fcb
-  - enabled: 1
-    path: Assets/Scenes/StageChange.unity
-    guid: 9725c1ba1fa43614d84ac2ce8f2eb32f
-  - enabled: 1
     path: Assets/Scenes/StoryScene.unity
     guid: e81a3ead1c76f4c4bbb2270d71bf9881
   - enabled: 1
-    path: Assets/Scenes/Stage1.unity
+    path: Assets/Scenes/PlayerSelectScene.unity
+    guid: 6c718ad08e2d35c47be51073ceea0fcb
+  - enabled: 1
+    path: Assets/Scenes/Stage1AS.unity
+    guid: 81e2ae81188796247a012822bdf91733
+  - enabled: 1
+    path: Assets/Scenes/Stage1AW.unity
     guid: 8dbe0033cac12094198fe0d834bd69a2
   - enabled: 1
-    path: Assets/Scenes/Stage1_Archer_Socerer.unity
-    guid: bcf8d2a3b15c8474d89ada7a713bf5ef
-  - enabled: 1
-    path: Assets/Scenes/Stage1_Warrior_Socerer.unity
+    path: Assets/Scenes/Stage1WS.unity
     guid: 7333fad0e5c1e344fa0f2d808cf04fec
   - enabled: 1
-    path: Assets/Scenes/Stage2.unity
+    path: Assets/Scenes/StageChangeAS.unity
+    guid: 3dc8af9616e6a2645a4d8ee78f814e42
+  - enabled: 1
+    path: Assets/Scenes/StageChangeAW.unity
+    guid: 3271412384766d34d864ae560bace83b
+  - enabled: 1
+    path: Assets/Scenes/StageChangeWS.unity
+    guid: 9725c1ba1fa43614d84ac2ce8f2eb32f
+  - enabled: 1
+    path: Assets/Scenes/Stage2AS.unity
+    guid: 2c37ce57fd381a940b53ea1eb464e71d
+  - enabled: 1
+    path: Assets/Scenes/Stage2AW.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Stage2WS.unity
+    guid: 8ab81156b46f22c4f9912fecbf7aef83
   - enabled: 1
     path: Assets/Scenes/ClearScene.unity
     guid: 9dcf110591ccd2e42a397e1407aca8a2
