@@ -9,4 +9,14 @@ public class SelectSceneManager : MonoBehaviour
     {
         SceneManager.LoadScene("Stage1");
     }
+
+    public void SceneChange2()
+    {
+        SceneManager.LoadScene("Stage1_Warrior_Socerer");
+    }
+
+    public void SceneChange3()
+    {
+        SceneManager.LoadScene("Stage1_Archer_Socerer");
+    }
 }
