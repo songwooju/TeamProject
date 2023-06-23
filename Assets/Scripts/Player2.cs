@@ -62,7 +62,7 @@ public class Player2 : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (gameManager != null)
+        if (gameManager != null && !manager.itemBuffShield)
         {
             gameManager.sharedCurrentHealth -= damage;
         }
@@ -85,6 +85,24 @@ public class Player2 : MonoBehaviour
             {
                 manager.currentObjectCount = 0;
                 manager.itemBuffHP = true;
+            }
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Item3"))
+        {
+            if (manager != null)
+            {
+                manager.currentObjectCount = 0;
+                manager.itemBuffShield = true;
+            }
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Item4"))
+        {
+            if (manager != null)
+            {
+                manager.currentObjectCount = 0;
+                manager.itemBuffMP = true;
             }
             Destroy(collision.gameObject);
         }

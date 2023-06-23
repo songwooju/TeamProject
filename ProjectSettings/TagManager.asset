@@ -9,6 +9,8 @@ TagManager:
   - Floor
   - Item
   - Item2
+  - Item3
+  - Item4
   layers:
   - Default
   - TransparentFX

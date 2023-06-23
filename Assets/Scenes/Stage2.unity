@@ -666,7 +666,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sharedMaxHealth: 3
   sharedCurrentHealth: 0
-  sharedMP: 0
   playerHpSprite:
   - {fileID: 21300000, guid: cfe580ca9ff433e428e2934eed937bba, type: 3}
   - {fileID: 21300000, guid: 491bcd15e452e7c4480c51b2dbea2dea, type: 3}
@@ -1350,9 +1349,16 @@ MonoBehaviour:
   Items:
   - {fileID: 4808905263897520720, guid: c2d348d851ebec6499cf4344e5fef155, type: 3}
   - {fileID: 1387697830987175008, guid: 4a12d79769994d145bb2a0d9ca051f45, type: 3}
+  - {fileID: 1387697830987175008, guid: 575564f00455c2543b197f850726d85d, type: 3}
+  - {fileID: 1387697830987175008, guid: be52d765c0e5333479841352c6375d5e, type: 3}
   currentObjectCount: 0
   itemBuff: 1
   itemBuffHP: 0
+  itemBuffShield: 0
+  itemBuffMP: 0
+  players:
+  - {fileID: 506676688}
+  - {fileID: 1046140801}
   isBossAttack: 0
 --- !u!4 &587396337
 Transform:
