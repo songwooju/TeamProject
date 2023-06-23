@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public int sharedMaxHealth = 3;
     public int sharedCurrentHealth;
-    public int sharedMP;
 
     public Sprite[] playerHpSprite;
     public Slider mpBar;

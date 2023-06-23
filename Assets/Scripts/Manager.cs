@@ -25,6 +25,10 @@ public class Manager : MonoBehaviour
     public bool itemBuff = false; // 아이템 효과 적용
     public bool itemBuffHP = false; // 아이템 효과, 먹으면 체력 증가
     float itemBuffTime = 5.0f; // 아이템 효과 적용 시간
+    public bool itemBuffShield = false; // 먹으면 5초간 무적
+    public bool itemBuffMP = false; // 먹으면 마나 증가
+
+    public Transform[] players;
 
     public bool isBossAttack; // 보스 애니메이션 적용을 위한 변수
 
@@ -56,6 +60,8 @@ public class Manager : MonoBehaviour
         ItemSqwanTime();
         ItemBuffTime();
         ItemBuffHP();
+        ItemBuffShield();
+        ItemBuffMP();
     }
 
     private GameObject GetClickedObject()
@@ -76,7 +82,7 @@ public class Manager : MonoBehaviour
 
         if (objectSpwanTime > 5.0f)
         {
-            randomItem = Random.Range(0, 2);
+            randomItem = Random.Range(0, 4);
             randomItemPos = Random.Range(0, 9);
             itemPos = Floors[randomItemPos].transform.position;
             Instantiate(Items[randomItem], itemPos, Quaternion.identity);
@@ -122,5 +128,49 @@ public class Manager : MonoBehaviour
                 return;
             }
         }
+    }
+
+    void ItemBuffShield()
+    {
+        if (itemBuffShield)
+        {
+            itemBuffTime -= Time.deltaTime;
+
+            for (int i = 0; i < 2; i++)
+            {
+                StartCoroutine(ChangeColor(players[i], Color.yellow));
+            }
+
+            if (itemBuffTime <= 0.0f)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    StartCoroutine(ChangeColor(players[i], Color.white));
+                }
+                itemBuffShield = false;
+                itemBuffTime = 5.0f;
+            }
+        }
+    }
+
+    void ItemBuffMP()
+    {
+        if (itemBuffMP)
+        {
+            if (GameManager.instance.testMp <= 80)
+            {
+                GameManager.instance.testMp += 20;
+                itemBuffMP = false;
+                return;
+            }
+            else return;
+        }
+    }
+
+    IEnumerator ChangeColor(Transform player, Color color, float delay = 0f)
+    {
+        yield return new WaitForSeconds(delay);
+        SpriteRenderer playerRenderer = player.GetComponent<SpriteRenderer>();
+        playerRenderer.color = color;
     }
 }
