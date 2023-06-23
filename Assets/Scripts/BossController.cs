@@ -40,7 +40,9 @@ public class BossController : MonoBehaviour
 
         if (health <= 0)
         {
-            Die();
+            animator.SetBool("isDie", true);
+
+            StartCoroutine(DieCoroutine());
         }
     }
 
@@ -67,8 +69,16 @@ public class BossController : MonoBehaviour
 
     public void Die()
     {
-        stageClearUI.SetActive(true);
+        
+        
+    }
+
+    private IEnumerator DieCoroutine()
+    {
+        yield return new WaitForSeconds(2.0f);
+
         PauseGame();
+        stageClearUI.SetActive(true);
     }
 
     public void OnStageClearButtonClick()
