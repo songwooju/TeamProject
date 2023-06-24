@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Pattern4 : MonoBehaviour
 {
-    public Transform[] tiles;
-    Transform targetTile;
-
     int xPos = 0;
     int yPos = 0;
     int randomTileIndex;
 
-    public Sprite[] tileSprite;
+    public GameObject[] tilesGameObject;
+    GameObject targerGameObject;
 
     // Start is called before the first frame update
     void Start()
@@ -21,19 +19,16 @@ public class Pattern4 : MonoBehaviour
     void MakeAnCanNotBeMovedTile()
     {
         ChooseRandomTile();
-        StartCoroutine(ToOriginal(targetTile));
+        StartCoroutine(ToOriginal());
 
         Invoke("MakeAnCanNotBeMovedTile", 5f);
     }
 
-    private IEnumerator ToOriginal(Transform tile)
+    private IEnumerator ToOriginal()
     {
         yield return new WaitForSeconds(3f);
-        SpriteRenderer tileRenderer = tile.GetComponent<SpriteRenderer>();
-        if (tileRenderer != null)
-        {
-            tileRenderer.sprite = tileSprite[randomTileIndex];
-        }
+        targerGameObject = tilesGameObject[randomTileIndex];
+        targerGameObject.GetComponent<Animator>().SetTrigger("canGo");
         Manager.instance.posArray[yPos, xPos] = 0;
     }
 
@@ -48,9 +43,8 @@ public class Pattern4 : MonoBehaviour
             CheckPosArray(randomTileIndex);
         }
 
-        targetTile = tiles[randomTileIndex];
-        SpriteRenderer tileRenderer = targetTile.GetComponent<SpriteRenderer>();
-        tileRenderer.sprite = tileSprite[9];
+        targerGameObject = tilesGameObject[randomTileIndex];
+        targerGameObject.GetComponent<Animator>().SetTrigger("can'tGo");
         Manager.instance.posArray[yPos, xPos] = 2;
     }
 

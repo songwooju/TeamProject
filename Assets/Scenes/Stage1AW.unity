@@ -1374,7 +1374,6 @@ GameObject:
   - component: {fileID: 587396337}
   - component: {fileID: 587396336}
   - component: {fileID: 587396338}
-  - component: {fileID: 587396340}
   - component: {fileID: 587396339}
   m_Layer: 0
   m_Name: GameManager
@@ -1536,6 +1535,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+<<<<<<< Updated upstream
 --- !u!114 &587396340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1895,6 +1895,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707849786}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> Stashed changes
 --- !u!1 &743195861
 GameObject:
   m_ObjectHideFlags: 0
