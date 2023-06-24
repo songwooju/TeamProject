@@ -19,7 +19,7 @@ EditorBuildSettings:
     guid: 81e2ae81188796247a012822bdf91733
   - enabled: 1
     path: Assets/Scenes/Stage1AW.unity
-    guid: 8dbe0033cac12094198fe0d834bd69a2
+    guid: f4b58c77014920546b6f2df4ce02e00e
   - enabled: 1
     path: Assets/Scenes/Stage1WS.unity
     guid: 7333fad0e5c1e344fa0f2d808cf04fec
@@ -33,14 +33,14 @@ EditorBuildSettings:
     path: Assets/Scenes/StageChangeWS.unity
     guid: 9725c1ba1fa43614d84ac2ce8f2eb32f
   - enabled: 1
-    path: Assets/Scenes/Stage2AS.unity
-    guid: 2c37ce57fd381a940b53ea1eb464e71d
-  - enabled: 1
     path: Assets/Scenes/Stage2AW.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Stage2AS.unity
+    guid: 59cafb0607214be479ddcc2daaac0896
+  - enabled: 1
     path: Assets/Scenes/Stage2WS.unity
-    guid: 8ab81156b46f22c4f9912fecbf7aef83
+    guid: e4447308e956d2f45831f14c047b258e
   - enabled: 1
     path: Assets/Scenes/ClearScene.unity
     guid: 9dcf110591ccd2e42a397e1407aca8a2
