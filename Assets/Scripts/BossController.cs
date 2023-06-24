@@ -75,7 +75,7 @@ public class BossController : MonoBehaviour
 
     private IEnumerator DieCoroutine()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
 
         PauseGame();
         stageClearUI.SetActive(true);
