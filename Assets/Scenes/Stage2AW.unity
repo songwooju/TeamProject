@@ -1684,16 +1684,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76cfaf67e81f06f4b935453c49f27878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiles:
-  - {fileID: 743195863}
-  - {fileID: 1562398849}
-  - {fileID: 1067650961}
-  - {fileID: 170077274}
-  - {fileID: 437084686}
-  - {fileID: 543703343}
-  - {fileID: 1552754454}
-  - {fileID: 513917928}
-  - {fileID: 1956235462}
   tilesGameObject:
   - {fileID: 743195861}
   - {fileID: 170077272}
@@ -2786,16 +2776,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76cfaf67e81f06f4b935453c49f27878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiles:
-  - {fileID: 743195863}
-  - {fileID: 170077274}
-  - {fileID: 1552754454}
-  - {fileID: 1562398849}
-  - {fileID: 437084686}
-  - {fileID: 513917928}
-  - {fileID: 1067650961}
-  - {fileID: 543703343}
-  - {fileID: 1956235462}
   tilesGameObject: []
 --- !u!1 &1067650959
 GameObject:
@@ -3149,6 +3129,7 @@ GameObject:
   - component: {fileID: 1306181173}
   - component: {fileID: 1306181172}
   - component: {fileID: 1306181174}
+  - component: {fileID: 1306181175}
   m_Layer: 6
   m_Name: Boss
   m_TagString: Boss
@@ -3286,6 +3267,27 @@ MonoBehaviour:
   bossHpBar: {fileID: 2007537942}
   stageClearUI: {fileID: 1774458190}
   isGamePaused: 0
+--- !u!95 &1306181175
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306181169}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1306695257
 GameObject:
   m_ObjectHideFlags: 0
