@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public GameObject prefabBullet;
     public GameObject GameOverUI;
 
+
+
     //public bool isGamePaused = false;
 
 
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
         gameManager = GameManager.instance;
         manager = Manager.instance;
         animator = GetComponent<Animator>();
+        GameOverUI.SetActive(false);
 
         if (gameManager != null)
         {
@@ -227,6 +230,7 @@ public class Player : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("FirstScene");
+        Debug.Log("1");
     }
 }
 
