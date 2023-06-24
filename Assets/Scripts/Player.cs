@@ -10,10 +10,7 @@ public class Player : MonoBehaviour
     public GameObject prefabBullet;
     public GameObject GameOverUI;
 
-
-
-    //public bool isGamePaused = false;
-
+    public AudioSource gameSound;
 
     private GameManager gameManager;
     private Manager manager;
@@ -122,6 +119,7 @@ public class Player : MonoBehaviour
         if (gameManager != null && gameManager.sharedCurrentHealth <= 0)
         {
             animator.SetBool("IsDie", true);
+            gameSound.volume = 0.0f;
             StartCoroutine(GameOverRoutine());
         }
     }

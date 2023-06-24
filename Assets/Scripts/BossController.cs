@@ -14,6 +14,9 @@ public class BossController : MonoBehaviour
 
     public bool isGamePaused = false;
 
+    public AudioSource gameSound;
+    public AudioSource clearSound;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -79,6 +82,8 @@ public class BossController : MonoBehaviour
 
         PauseGame();
         stageClearUI.SetActive(true);
+        gameSound.volume = 0.0f;
+        clearSound.volume = 1.0f;
     }
 
     public void OnStageClearButtonClick()
@@ -104,6 +109,8 @@ public class BossController : MonoBehaviour
     {
         ResumeGame();
         SceneManager.LoadScene("ClearScene");
+        gameSound.volume = 0.0f;
+        clearSound.volume = 1.0f;
     }
 
     private void PauseGame()
