@@ -2223,9 +2223,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 167936088}
-        m_TargetAssemblyTypeName: GoStage1, Assembly-CSharp
-        m_MethodName: ChangeScene1
+      - m_Target: {fileID: 506676685}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnGameOverButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4559,9 +4559,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 506676685}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: OnGameOverButtonClick
+      - m_Target: {fileID: 167936088}
+        m_TargetAssemblyTypeName: GoStage1, Assembly-CSharp
+        m_MethodName: GotoFirstScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

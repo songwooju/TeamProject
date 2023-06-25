@@ -21,7 +21,7 @@ public class OnClickMenu : MonoBehaviour
     }
     public void OnClickReStartBtn()
     {
-        SceneManager.LoadScene("Stage1");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void OnClickOptionBtn() // 옵션버튼 눌렀을 때 작동 정지
     {

@@ -227,8 +227,7 @@ public class Player : MonoBehaviour
     public void OnGameOverButtonClick()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("FirstScene");
-        Debug.Log("1");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
 
