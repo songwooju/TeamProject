@@ -420,7 +420,6 @@ GameObject:
   m_Component:
   - component: {fileID: 509184368}
   - component: {fileID: 509184369}
-  - component: {fileID: 509184370}
   m_Layer: 0
   m_Name: ClickManager
   m_TagString: Untagged
@@ -455,102 +454,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e23d4ed2ebf7d242bcafb4979f4bdb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &509184370
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509184367}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 043fdf4d15ea7a5489fe6de1367d0800, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &547624374
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,12 +507,13 @@ MonoBehaviour:
   storyText: {fileID: 329393162}
   sentence:
   - "\uBA3C \uC61B\uB0A0, \uC6A9\uAC10\uD55C \uC804\uC0AC\uB4E4\uC774 \uD568\uAED8
-    \uC0B4\uC544\uAC00\uB358 \uC6B0\uAC00\uC6B0\uAC00 \uBD80\uC871"
+    \uC0B4\uC544\uAC00\uB358 \uD3C9\uD654\uB85C\uC6B4 \uC6B0\uAC00\uC6B0\uAC00 \uBD80\uC871\uC774
+    \uC788\uC5C8\uB2E4."
   - "\uC5B4\uB290 \uB0A0, \uBD80\uC871\uC758 \uAC00\uC7A5 \uC5B4\uB978\uC778 \uC608\uC5B8\uAC00\uAC00
     \uBC14\uB2E4 \uB108\uBA38 \uC12C\uC758 \uD654\uC0B0 \uD3ED\uBC1C\uC744 \uC608\uC9C0
     \uD588\uB2E4."
   - "\uD654\uC0B0 \uBD84\uD654\uC758 \uC774\uC720\uB294 \uC81C\uBA4B\uB300\uB85C
-    \uD589\uB3D9\uD558\uB294 \uACF5\uB8E1\uB4E4\uC5D0 \uC2E0\uC774 \uBD84\uB178\uD588\uC9C0
+    \uD589\uB3D9\uD558\uB294 \uACF5\uB8E1\uB4E4\uC5D0 \uC2E0\uC774 \uBD84\uB178\uD588\uAE30
     \uB54C\uBB38\uC774\uB2E4."
   - "\uC774\uC5D0 \uBD80\uC871\uC758 \uC804\uC0AC\uB4E4\uC740 \uACF5\uB8E1\uB4E4\uC744
     \uD1A0\uBC8C\uD558\uC5EC \uC81C\uBB3C\uC744 \uBAA8\uC544 \uC81C\uC0AC\uB97C \uB4DC\uB9AC\uAE30

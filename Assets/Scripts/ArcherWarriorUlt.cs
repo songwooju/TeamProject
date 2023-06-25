@@ -12,14 +12,17 @@ public class ArcherWarriorUlt : MonoBehaviour
 
     private GameManager gameManager;
     private BossController bossController;
-    
 
+    AudioSource audioSrc;
     private void Start()
     {
         popupPanel.SetActive(false);
 
         gameManager = GameManager.instance;
         bossController = FindObjectOfType<BossController>();
+
+        audioSrc = GetComponent<AudioSource>();
+        audioSrc.Stop();
     }
 
     private void Update()
@@ -30,6 +33,7 @@ public class ArcherWarriorUlt : MonoBehaviour
             {
                 if (!isPopupShowing)
                 {
+                    audioSrc.Play();
                     StartCoroutine(ShowPopup());
                 }
             }

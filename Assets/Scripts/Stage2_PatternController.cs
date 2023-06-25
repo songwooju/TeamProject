@@ -5,6 +5,8 @@ using UnityEngine;
 public class Stage2_PatternController : MonoBehaviour
 {
     public bool isPattern = false;
+
+    public AudioSource audioSrc;
     void Start()
     {
         BossPattern();
@@ -18,9 +20,11 @@ public class Stage2_PatternController : MonoBehaviour
         {
             case 0:
                 GameObject.Find("Square").GetComponent<Pattern>().ShootManager();
+                audioSrc.Play();
                 break;
             case 1:
                 GameObject.Find("Capsule").GetComponent<Pattern3>().ShootManager3();
+                audioSrc.Play();
                 break;
         }
         Invoke("BossPattern", 3f);

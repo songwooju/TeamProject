@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     private int cPos_y; // 배열에서 플레이어의 세로 위치
     private int cPos_x; // 배열에서 플레이어의 가로 위치
 
-
+    AudioSource audioSrc;
     private void Start()
     {
         gameManager = GameManager.instance;
@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
         time = 0;
         characterArray();
         cPosTo_1();
+        audioSrc = GetComponent<AudioSource>();
+        audioSrc.Stop();
     }
 
 
@@ -82,6 +84,7 @@ public class Player : MonoBehaviour
             {
                 manager.currentObjectCount = 0;
                 manager.itemBuff = true;
+                audioSrc.Play();
             }
             Destroy(collision.gameObject);
         }
@@ -91,6 +94,7 @@ public class Player : MonoBehaviour
             {
                 manager.currentObjectCount = 0;
                 manager.itemBuffHP = true;
+                audioSrc.Play();
             }
             Destroy(collision.gameObject);
         }
@@ -100,6 +104,7 @@ public class Player : MonoBehaviour
             {
                 manager.currentObjectCount = 0;
                 manager.itemBuffShield = true;
+                audioSrc.Play();
             }
             Destroy(collision.gameObject);
         }
@@ -109,6 +114,7 @@ public class Player : MonoBehaviour
             {
                 manager.currentObjectCount = 0;
                 manager.itemBuffMP = true;
+                audioSrc.Play();
             }
             Destroy(collision.gameObject);
         }

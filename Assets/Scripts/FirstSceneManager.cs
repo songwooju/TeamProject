@@ -7,6 +7,11 @@ public class FirstSceneManager : MonoBehaviour
 {
     public void SceneChange()
     {
+        SceneManager.LoadScene("Explanation");
+    }
+
+    public void Skip()
+    {
         SceneManager.LoadScene("StoryScene");
     }
 
