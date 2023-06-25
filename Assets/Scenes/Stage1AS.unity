@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a69fd9b1613984b89cbf07b74c843f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedMaxHealth: 1
+  sharedMaxHealth: 3
   sharedCurrentHealth: 0
   playerHpSprite:
   - {fileID: 21300000, guid: cfe580ca9ff433e428e2934eed937bba, type: 3}
@@ -3543,7 +3543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4414fd90f4f40044aa6c97d8b7236038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1111
+  health: 1000
   bossHpBar: {fileID: 2007537942}
   stageClearUI: {fileID: 621659836}
   isGamePaused: 0

@@ -3566,7 +3566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4414fd90f4f40044aa6c97d8b7236038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1111
+  health: 1000
   bossHpBar: {fileID: 2007537942}
   stageClearUI: {fileID: 147169014}
   isGamePaused: 0
