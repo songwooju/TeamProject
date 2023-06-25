@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour
 {
-    public int health = 1000; // 보스의 체력
+    public int health = 10000; // 보스의 체력
 
     public Slider bossHpBar;
     public GameObject stageClearUI;
@@ -51,7 +51,7 @@ public class BossController : MonoBehaviour
 
     void BossHpBarUpdate()
     {
-        bossHpBar.value = health / 1000f;
+        bossHpBar.value = health / 10000f;
         if (bossHpBar.value <= 0)
         {
             GameObject bossHpFillArea = GameObject.Find("Boss_HP").transform.Find("Fill Area").gameObject;
