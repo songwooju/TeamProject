@@ -53,7 +53,7 @@ public class StoryMaker : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.5f);
         NextText();
     }
 }

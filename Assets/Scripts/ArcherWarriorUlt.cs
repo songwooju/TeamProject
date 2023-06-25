@@ -57,7 +57,7 @@ public class ArcherWarriorUlt : MonoBehaviour
 
         if (bossController != null)
         {
-            bossController.TakeDamage(500);
+            bossController.TakeDamage(50);
         }
 
         Time.timeScale = 1f;

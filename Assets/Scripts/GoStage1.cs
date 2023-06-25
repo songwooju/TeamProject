@@ -41,6 +41,7 @@ public class GoStage1 : MonoBehaviour
 
     public void GotoFirstScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("FirstScene");
     }
 }
