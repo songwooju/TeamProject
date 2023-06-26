@@ -219,7 +219,7 @@ RectTransform:
   m_GameObject: {fileID: 568083141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 845902951}
@@ -227,7 +227,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 234, y: -666}
+  m_AnchoredPosition: {x: 234, y: -519}
   m_SizeDelta: {x: 414.1056, y: 408.1791}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &568083143
@@ -637,11 +637,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 900, y: 1600}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -720,7 +720,7 @@ RectTransform:
   m_GameObject: {fileID: 997268440}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 845902951}
@@ -728,7 +728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -227, y: -666}
+  m_AnchoredPosition: {x: -197, y: -529}
   m_SizeDelta: {x: 418.2313, y: 176.4198}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &997268442
@@ -986,7 +986,7 @@ RectTransform:
   m_GameObject: {fileID: 1483524583}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1159126257}
@@ -995,7 +995,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -261, y: -147.6}
+  m_AnchoredPosition: {x: -103, y: -147.6}
   m_SizeDelta: {x: 448.5613, y: 295.1943}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1483524585
@@ -1011,11 +1011,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storyText: {fileID: 1159126258}
-  sentence: []
-  storySentences:
-  - "\uACF5\uB8E1\uB4E4\uC744 \uD1A0\uBC8C\uD558\uACE0 \uC81C\uC0AC\uB97C \uC9C0\uB0B4
-    \uC2E0\uB4E4\uC758 \uD654\uAC00 \uD480\uB838\uC2B5\uB2C8\uB2E4!"
-  textNum: 0
 --- !u!1 &1977591937
 GameObject:
   m_ObjectHideFlags: 0
