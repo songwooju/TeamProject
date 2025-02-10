@@ -11,18 +11,18 @@ public class Player2 : MonoBehaviour
     private Manager manager;
     private Animator animator;
 
-    bool isMoving; // ¿òÁ÷ÀÌ°í ÀÖ´ÂÁö
-    Vector3 originPos, targetPos; // ¿ø·¡ À§Ä¡, ¸ñÇ¥ À§Ä¡
-    float timeToMove = 0.2f; // ÀÌµ¿½Ã°£
+    bool isMoving; // ì›€ì§ì´ê³  ìžˆëŠ”ì§€
+    Vector3 originPos, targetPos; // ì›ëž˜ ìœ„ì¹˜, ëª©í‘œ ìœ„ì¹˜
+    float timeToMove = 0.2f; // ì´ë™ì‹œê°„
 
     Vector3 upDirection = new Vector3(0f, 1.1f, 0.0f);
     Vector3 leftDirection = new Vector3(-1.1f, 0f, 0.0f);
     Vector3 downDirection = new Vector3(0f, -1.1f, 0.0f);
     Vector3 rightDirection = new Vector3(1.1f, 0f, 0.0f);
 
-    private Vector3 currentPos; // ÇÃ·¹ÀÌ¾îÀÇ ÇöÀç À§Ä¡
-    private int cPos_y; // ¹è¿­¿¡¼­ ÇÃ·¹ÀÌ¾îÀÇ ¼¼·Î À§Ä¡
-    private int cPos_x; // ¹è¿­¿¡¼­ ÇÃ·¹ÀÌ¾îÀÇ °¡·Î À§Ä¡
+    private Vector3 currentPos; // í”Œë ˆì´ì–´ì˜ í˜„ìž¬ ìœ„ì¹˜
+    private int cPos_y; // ë°°ì—´ì—ì„œ í”Œë ˆì´ì–´ì˜ ì„¸ë¡œ ìœ„ì¹˜
+    private int cPos_x; // ë°°ì—´ì—ì„œ í”Œë ˆì´ì–´ì˜ ê°€ë¡œ ìœ„ì¹˜
 
     AudioSource audioSrc;
     private void Start()
@@ -169,18 +169,18 @@ public class Player2 : MonoBehaviour
         }
     }
 
-    void cPosTo_1() // ÇÃ·¹ÀÌ¾î°¡ ÀÖ´Â À§Ä¡¸¦ 3x3 ¹è¿­·Î Ç¥ÇöÇßÀ»¶§ 1·Î ¹Ù²ãÁÜ, 0ÀÌ ±âº», 1ÀÌ ÇöÀç À§Ä¡ÇØ ÀÖ´Ù´Â°ÍÀ» ÀÇ¹Ì.
+    void cPosTo_1() // í”Œë ˆì´ì–´ê°€ ìžˆëŠ” ìœ„ì¹˜ë¥¼ 3x3 ë°°ì—´ë¡œ í‘œí˜„í–ˆì„ë•Œ 1ë¡œ ë°”ê¿”ì¤Œ, 0ì´ ê¸°ë³¸, 1ì´ í˜„ìž¬ ìœ„ì¹˜í•´ ìžˆë‹¤ëŠ”ê²ƒì„ ì˜ë¯¸.
     {
         characterArray();
         manager.posArray[cPos_y, cPos_x] = 1;
     }
 
-    void cPosTo_0() // Ä³¸¯ÅÍ°¡ ÇöÀçÀ§Ä¡¸¦ ¹þ¾î³µÀ» ¶§ ¹è¿­À» 1¿¡¼­ 0À¸·Î ¹Ù²ãÁÖ±â À§ÇÑ ÇÔ¼ö
+    void cPosTo_0() // ìºë¦­í„°ê°€ í˜„ìž¬ìœ„ì¹˜ë¥¼ ë²—ì–´ë‚¬ì„ ë•Œ ë°°ì—´ì„ 1ì—ì„œ 0ìœ¼ë¡œ ë°”ê¿”ì£¼ê¸° ìœ„í•œ í•¨ìˆ˜
     {
         characterArray();
         manager.posArray[cPos_y, cPos_x] = 0;
     }
-    void characterArray() // Ã³À½ Ä³¸¯ÅÍÀÇ À§Ä¡¸¦ ¹è¿­¿¡ Ç¥ÇöÇÏ±â À§ÇÑ ÇÔ¼ö, InitializeÇÔ¼ö°¡ »ý±â¸é ±× ¾È¿¡ ³Ö¾î¾ßÇÔ.
+    void characterArray() // ì²˜ìŒ ìºë¦­í„°ì˜ ìœ„ì¹˜ë¥¼ ë°°ì—´ì— í‘œí˜„í•˜ê¸° ìœ„í•œ í•¨ìˆ˜, Initializeí•¨ìˆ˜ê°€ ìƒê¸°ë©´ ê·¸ ì•ˆì— ë„£ì–´ì•¼í•¨.
     {
         currentPos = this.gameObject.transform.position;
         if (currentPos.y > -1)

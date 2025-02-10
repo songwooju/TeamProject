@@ -7,7 +7,7 @@ public class BulletController : MonoBehaviour
     public float speed;
     public Transform bossTransform;
 
-    private int damage = 1; // ÃÑ¾ËÀÇ µ¥¹ÌÁö
+    private int damage = 1; // ì´ì•Œì˜ ë°ë¯¸ì§€
 
     private Rigidbody2D bulletRigidbody;
 
@@ -20,7 +20,7 @@ public class BulletController : MonoBehaviour
             bossTransform = bossObject.transform;
         }
 
-        bulletRigidbody = GetComponent<Rigidbody2D>(); // Rigidbody2D ÄÄÆ÷³ÍÆ® °¡Á®¿À±â
+        bulletRigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -36,9 +36,9 @@ public class BulletController : MonoBehaviour
         {
             Vector2 direction = (bossTransform.position - transform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            angle -= 75f; // È¸Àü °¢µµ¿¡ 45µµ¸¦ »« °ªÀ¸·Î ¼öÁ¤
-            bulletRigidbody.rotation = angle; // ÃÑ¾ËÀÇ È¸ÀüÀ» ¹æÇâ¿¡ µû¶ó ¼³Á¤
-            bulletRigidbody.velocity = direction * speed; // Rigidbody2DÀÇ velocity ¼Ó¼ºÀ» ÀÌ¿ëÇÏ¿© ÀÌµ¿
+            angle -= 75f; // íšŒì „ ê°ë„ì— 45ë„ë¥¼ ëº€ ê°’ìœ¼ë¡œ ìˆ˜ì •
+            bulletRigidbody.rotation = angle; // ì´ì•Œì˜ íšŒì „ì„ ë°©í–¥ì— ë”°ë¼ ì„¤ì •
+            bulletRigidbody.velocity = direction * speed; // Rigidbody2Dì˜ velocity ì†ì„±ì„ ì´ìš©í•˜ì—¬ ì´ë™
         }
     }
 
@@ -54,16 +54,15 @@ public class BulletController : MonoBehaviour
     {
         if (collision.CompareTag("Boss"))
         {
-            BossController boss = collision.GetComponent<BossController>(); // º¸½ºÀÇ BossController ½ºÅ©¸³Æ®¸¦ °¡Á®¿È
-            if (boss != null) // BossController ½ºÅ©¸³Æ®°¡ Á¸ÀçÇÒ °æ¿ì
+            BossController boss = collision.GetComponent<BossController>(); // ë³´ìŠ¤ì˜ BossController ìŠ¤í¬ë¦½íŠ¸ë¥¼ ê°€ì ¸ì˜´
+            if (boss != null) 
             {
-                boss.TakeDamage(damage); // º¸½ºÀÇ Ã¼·ÂÀ» °¨¼Ò½ÃÅ´
-                if (boss.health <= 0) // º¸½ºÀÇ Ã¼·ÂÀÌ 0 ÀÌÇÏÀÏ °æ¿ì
+                boss.TakeDamage(damage);
+                if (boss.health <= 0)
                 {
-                    boss.Die(); // º¸½º¸¦ ÆÄ±«ÇÔ
+                    boss.Die();
                 }
             }
-            //Destroy(gameObject); // ÃÑ¾ËÀ» ÆÄ±«ÇÔ
         }
     }
 

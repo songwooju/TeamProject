@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour
 {
-    public int health = 1000; // 보스의 체력
+    public int health = 1000;
 
     public Slider bossHpBar;
     public GameObject stageClearUI;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossAttackController : MonoBehaviour
 {
-    public int damageAmount = 1; // ÇÇÇØ·®
+    public int damageAmount = 1; // ë³´ìŠ¤ ê³µê²©ë ¥
 
     private void Start()
     {

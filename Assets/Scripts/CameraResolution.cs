@@ -3,18 +3,18 @@ using UnityEngine;
 public class CameraResolution : MonoBehaviour
 {
     /// <summary>
-    /// ÇØ´ç ½ºÅ©¸³Æ®¸¦ °¢°¢ÀÇ Ä«¸Ş¶ó¿¡ Ãß°¡
-    /// ¿¡µğÅÍ Screen Match Mode ¸¦ Expand·Î ÇØÁà¾ßÇÔ
+    /// í•´ë‹¹ ìŠ¤í¬ë¦½íŠ¸ë¥¼ ê°ê°ì˜ ì¹´ë©”ë¼ì— ì¶”ê°€
+    /// ì—ë””í„° Screen Match Mode ë¥¼ Expandë¡œ í•´ì¤˜ì•¼í•¨
     /// </summary>
     private void Awake()
     {
         Camera cam = GetComponent<Camera>();
 
-        // Ä«¸Ş¶ó ÄÄÆ÷³ÍÆ®ÀÇ Viewport Rect
+        // ì¹´ë©”ë¼ ì»´í¬ë„ŒíŠ¸ì˜ Viewport Rect
         Rect rt = cam.rect;
 
-        // ÇöÀç ¼¼·Î ¸ğµå 9:16, ¹İ´ë·Î ÇÏ°í ½ÍÀ¸¸é 16:9¸¦ ÀÔ·Â.
-        float scale_height = ((float)Screen.width / Screen.height) / ((float)9 / 16); // (°¡·Î / ¼¼·Î)
+        // í˜„ì¬ ì„¸ë¡œ ëª¨ë“œ 9:16, ë°˜ëŒ€ë¡œ í•˜ê³  ì‹¶ìœ¼ë©´ 16:9ë¥¼ ì…ë ¥.
+        float scale_height = ((float)Screen.width / Screen.height) / ((float)9 / 16); // (ê°€ë¡œ / ì„¸ë¡œ)
         float scale_width = 1f / scale_height;
 
         if (scale_height < 1)

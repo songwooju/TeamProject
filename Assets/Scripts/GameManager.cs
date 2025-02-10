@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
 
     void MPUpdate()
     {
-        if (testMp >= 100.0f) return; // ¸¶³ª°¡ ÀÌ¹Ì 100 ÀÌ»óÀÎ °æ¿ì Áõ°¡¸¦ ¸ØÃä´Ï´Ù.
+        if (testMp >= 100.0f) return; // // ë§ˆë‚˜ê°€ ì´ë¯¸ 100 ì´ìƒì¸ ê²½ìš° ì¦ê°€ë¥¼ ë©ˆì¶¥ë‹ˆë‹¤.
 
         mpBar.value = testMp / 100f;
         if (isAvoidPattern)
@@ -85,6 +85,6 @@ public class GameManager : MonoBehaviour
             isAvoidPattern = false;
         }
 
-        if (testMp > 100.0f) testMp = 100.0f; // ¸¶³ª°¡ 100À» ÃÊ°úÇÏÁö ¾Êµµ·Ï ¼³Á¤ÇÕ´Ï´Ù.
+        if (testMp > 100.0f) testMp = 100.0f; // ë§ˆë‚˜ê°€ 100ì„ ì´ˆê³¼í•˜ì§€ ì•Šë„ë¡ ì„¤ì •í•©ë‹ˆë‹¤.
     }
 }

@@ -6,7 +6,7 @@ public class Pattern4 : MonoBehaviour
 {
     int xPos = 0;
     int yPos = 0;
-    int randomTileIndex;
+    //int randomTileIndex;
 
     public GameObject[] tilesGameObject;
     GameObject targerGameObject;
@@ -18,34 +18,36 @@ public class Pattern4 : MonoBehaviour
     }
     void MakeAnCanNotBeMovedTile()
     {
-        ChooseRandomTile();
-        StartCoroutine(ToOriginal());
+        int index = ChooseRandomTile();
+        StartCoroutine(ToOriginal(index));
 
         Invoke("MakeAnCanNotBeMovedTile", 5f);
     }
 
-    private IEnumerator ToOriginal()
+    private IEnumerator ToOriginal(int index)
     {
         yield return new WaitForSeconds(3f);
-        targerGameObject = tilesGameObject[randomTileIndex];
+        Debug.Log("start coroutine");
+        targerGameObject = tilesGameObject[index];
         targerGameObject.GetComponent<Animator>().SetTrigger("canGo");
         Manager.instance.posArray[yPos, xPos] = 0;
     }
 
-    void ChooseRandomTile() // Ä³¸¯ÅÍ°¡ °¡Áö ¸øÇÏ´Â Å¸ÀÏÀ» ·£´ıÀ¸·Î Á¤ÇÏ´Â ÇÔ¼ö
+    int ChooseRandomTile() // ìºë¦­í„°ê°€ ê°€ì§€ ëª»í•˜ëŠ” íƒ€ì¼ì„ ëœë¤ìœ¼ë¡œ ì •í•˜ëŠ” í•¨ìˆ˜
     {
-        randomTileIndex = Random.Range(0, 9); // ·£´ıÇÑ ¼ö¸¦ Á¤ÇÔ
-        CheckPosArray(randomTileIndex); // Á¤ÇØÁø ¼ö¿¡ ÇØ´çÇÏ´Â 3X3 ¹è¿­À» È®ÀÎ (ÇÃ·¹ÀÌ¾î°¡ °ãÄ¡Áö ¾Ê°Ô ÇÏ±â À§ÇØ ¸¸µç ¹è¿­ È°¿ë)
-
-        while (Manager.instance.posArray[yPos, xPos] == 1) // ÇØ´ç ¹è¿­ÀÇ °ªÀÌ 1ÀÌ¶ó¸é ´Ù½Ã Á¤ÇÏµµ·Ï ÇÔ
+        int randomTileIndex = Random.Range(0, tilesGameObject.Length); // ëœë¤í•œ ìˆ˜ë¥¼ ì •í•¨
+        CheckPosArray(randomTileIndex); // ì •í•´ì§„ ìˆ˜ì— í•´ë‹¹í•˜ëŠ” 3X3 ë°°ì—´ì„ í™•ì¸ (í”Œë ˆì´ì–´ê°€ ê²¹ì¹˜ì§€ ì•Šê²Œ í•˜ê¸° ìœ„í•´ ë§Œë“  ë°°ì—´ í™œìš©)
+        while (Manager.instance.posArray[yPos, xPos] != 0) // í•´ë‹¹ ë°°ì—´ì˜ ê°’ì´ 1ì´ë¼ë©´ ë‹¤ì‹œ ì •í•˜ë„ë¡ í•¨, í•´ë‹¹ íƒ€ì¼ì— í”Œë ˆì´ì–´ê°€ ìˆë‹¤ë©´ ë‹¤ì‹œ ì •í•¨
         {
-            randomTileIndex = Random.Range(0, 9);
+            randomTileIndex = Random.Range(0, tilesGameObject.Length);
             CheckPosArray(randomTileIndex);
         }
 
-        targerGameObject = tilesGameObject[randomTileIndex]; // Á¤ÇØÁø ¼ö¿¡ ÇØ´çÇÏ´Â Å¸ÀÏÀ» 
+        targerGameObject = tilesGameObject[randomTileIndex]; // ì •í•´ì§„ ìˆ˜ì— í•´ë‹¹í•˜ëŠ” íƒ€ì¼ì„ íƒ€ê²Ÿìœ¼ë¡œ ì„¤ì •
         targerGameObject.GetComponent<Animator>().SetTrigger("can'tGo");
         Manager.instance.posArray[yPos, xPos] = 2;
+
+        return randomTileIndex;
     }
 
     void CheckPosArray(int randomTileIndex)

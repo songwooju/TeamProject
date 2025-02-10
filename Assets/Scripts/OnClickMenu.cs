@@ -23,23 +23,23 @@ public class OnClickMenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void OnClickOptionBtn() // ¿É¼Ç¹öÆ° ´­·¶À» ¶§ ÀÛµ¿ Á¤Áö
+    public void OnClickOptionBtn() // ì˜µì…˜ë²„íŠ¼ ëˆŒë €ì„ ë•Œ ì‘ë™ ì •ì§€
     {
         Time.timeScale = 0;
     }
-    public void MenuBtnOutn() // ¿É¼Ç¹öÆ° ³ª°¡¸é ÀÛµ¿
+    public void MenuBtnOutn() // ì˜µì…˜ë²„íŠ¼ ë‚˜ê°€ë©´ ì‘ë™
     {
         Time.timeScale = 1;
     }
     public void SetSoundVolume()
     {
-        if (isSoundOn) // ¼Ò¸®°¡ ÄÑÁ®ÀÖ´Ù¸é ²ôµµ·Ï
+        if (isSoundOn) // ì†Œë¦¬ê°€ ì¼œì ¸ìˆë‹¤ë©´ ë„ë„ë¡
         {
             soundSource.volume = 0.0f;
             GameObject.Find("Canvas").transform.Find("Menu").transform.Find("Sound").GetComponent<Image>().sprite = soundSprite[0];
             isSoundOn = false;
         }
-        else if (!isSoundOn) // ¼Ò¸®°¡ ²¨Á®ÀÖ´Ù¸é ÄÑÁöµµ·Ï
+        else if (!isSoundOn) // ì†Œë¦¬ê°€ êº¼ì ¸ìˆë‹¤ë©´ ì¼œì§€ë„ë¡
         {
             soundSource.volume = 1.0f;
             GameObject.Find("Canvas").transform.Find("Menu").transform.Find("Sound").GetComponent<Image>().sprite = soundSprite[1];

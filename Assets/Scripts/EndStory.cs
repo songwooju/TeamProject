@@ -11,7 +11,7 @@ public class EndStory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sentence = "°ø·æµéÀ» Åä¹úÇÏ°í Á¦»ç¸¦ Áö³» ½ÅµéÀÇ È­°¡  Ç®·È´Ù!  ¿ì°¡¿ì°¡ ºÎÁ·Àº ÆòÈ­¸¦ µÇÃ£¾Ò´Ù!";
+        sentence = "ê³µë£¡ë“¤ì„ í† ë²Œí•˜ê³  ì œì‚¬ë¥¼ ì§€ë‚´ ì‹ ë“¤ì˜ í™”ê°€  í’€ë ¸ë‹¤!  ìš°ê°€ìš°ê°€ ë¶€ì¡±ì€ í‰í™”ë¥¼ ë˜ì°¾ì•˜ë‹¤!";
         StartCoroutine(Typing(sentence));
     }
 

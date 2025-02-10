@@ -9,30 +9,30 @@ public class Manager : MonoBehaviour
     private GameObject target;
     private RaycastHit2D mHit;
 
-    public int[,] posArray = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } }; // 3x3 ¹è¿­À» ¸¸µé¾î¼­ Å¸ÀÏ À§Ä¡¿¡ ÇÃ·¹ÀÌ¾î°¡ ÀÖ´ÂÁö È®ÀÎÇÏ´Â ¿ëµµ
+    public int[,] posArray = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } }; // 3x3 ë°°ì—´ì„ ë§Œë“¤ì–´ì„œ íƒ€ì¼ ìœ„ì¹˜ì— í”Œë ˆì´ì–´ê°€ ìˆëŠ”ì§€ í™•ì¸í•˜ëŠ” ìš©ë„
 
-    public GameObject[] Floors; // ¹Ù´ÚÀ» ¹è¿­·Î ¹ŞÀ½
+    public GameObject[] Floors; // ë°”ë‹¥ì„ ë°°ì—´ë¡œ ë°›ìŒ
 
-    public int randomItemPos = 0; // ¾ÆÀÌÅÛ »ı¼º½Ã ·£´ıÀ¸·Î Á¤ÇØÁú À§Ä¡
-    public int randomItem = 0; // ·£´ıÀ¸·Î Á¤ÇØÁú ¾ÆÀÌÅÛ
-    Vector2 itemPos; // ¾ÆÀÌÅÛ»ı¼º À§Ä¡
-    public GameObject[] Items = new GameObject[2]; // ¾ÆÀÌÅÛ ¹è¿­·Î ¼³Á¤ 
+    public int randomItemPos = 0; // ì•„ì´í…œ ìƒì„±ì‹œ ëœë¤ìœ¼ë¡œ ì •í•´ì§ˆ ìœ„ì¹˜
+    public int randomItem = 0; // ëœë¤ìœ¼ë¡œ ì •í•´ì§ˆ ì•„ì´í…œ
+    Vector2 itemPos; // ì•„ì´í…œìƒì„± ìœ„ì¹˜
+    public GameObject[] Items = new GameObject[2]; //  ì•„ì´í…œ ë°°ì—´ë¡œ ì„¤ì • 
 
-    float objectSpwanTime = 0.0f; // ¿ÀºêÁ§Æ® »ı¼º Á¦ÇÑ ½Ã°£ (¿ÀºêÁ§Æ®°¡ ¾ø¾îÁö°í 5ÃÊ ÈÄ¿¡ Àç»ı¼º)
-    int objectSpwanCount = 1; // ¿ÀºêÁ§Æ® »ı¼º °¹¼ö Á¦ÇÑ
-    public int currentObjectCount = 0; // ÇöÀç »ı¼ºµÈ ¿ÀºêÁ§Æ® ¼ö, Player°¡ ¾ÆÀÌÅÛÀ» ¸ÔÀ¸¸é 0À¸·Î ¸¸µê
+    float objectSpwanTime = 0.0f; // ì˜¤ë¸Œì íŠ¸ ìƒì„± ì œí•œ ì‹œê°„ (ì˜¤ë¸Œì íŠ¸ê°€ ì—†ì–´ì§€ê³  5ì´ˆ í›„ì— ì¬ìƒì„±)
+    int objectSpwanCount = 1; // ì˜¤ë¸Œì íŠ¸ ìƒì„± ê°¯ìˆ˜ ì œí•œ
+    public int currentObjectCount = 0; // í˜„ì¬ ìƒì„±ëœ ì˜¤ë¸Œì íŠ¸ ìˆ˜, Playerê°€ ì•„ì´í…œì„ ë¨¹ìœ¼ë©´ 0ìœ¼ë¡œ ë§Œë“¦
 
-    public bool itemBuff = false; // ¾ÆÀÌÅÛ È¿°ú Àû¿ë
-    public bool itemBuffHP = false; // ¾ÆÀÌÅÛ È¿°ú, ¸ÔÀ¸¸é Ã¼·Â Áõ°¡
-    float itemBuffTime = 5.0f; // ¾ÆÀÌÅÛ È¿°ú Àû¿ë ½Ã°£
-    public bool itemBuffShield = false; // ¸ÔÀ¸¸é 5ÃÊ°£ ¹«Àû
-    public bool itemBuffMP = false; // ¸ÔÀ¸¸é ¸¶³ª Áõ°¡
+    public bool itemBuff = false; // ì•„ì´í…œ íš¨ê³¼ ì ìš©
+    public bool itemBuffHP = false; // ì•„ì´í…œ íš¨ê³¼, ë¨¹ìœ¼ë©´ ì²´ë ¥ ì¦ê°€
+    float itemBuffTime = 5.0f; // ì•„ì´í…œ íš¨ê³¼ ì ìš© ì‹œê°„
+    public bool itemBuffShield = false; // ë¨¹ìœ¼ë©´ 5ì´ˆê°„ ë¬´ì 
+    public bool itemBuffMP = false; // ë¨¹ìœ¼ë©´ ë§ˆë‚˜ ì¦ê°€
 
     public Transform[] players;
 
-    public bool isBossAttack; // º¸½º ¾Ö´Ï¸ŞÀÌ¼Ç Àû¿ëÀ» À§ÇÑ º¯¼ö
+    public bool isBossAttack; // ë³´ìŠ¤ ì• ë‹ˆë©”ì´ì…˜ ì ìš©ì„ ìœ„í•œ ë³€ìˆ˜
 
-    private void Awake() // ½Ì±ÛÅæ
+    private void Awake() // ì‹±ê¸€í†¤
     {
         if (instance == null)
         {
@@ -47,7 +47,7 @@ public class Manager : MonoBehaviour
 
     private void Start()
     {
-        Floors = GameObject.FindGameObjectsWithTag("Floor"); // FloorÅÂ±×¸¦ °®°í ÀÖ´Â ¿ÀºêÁ§Æ®¸¦ ¹è¿­·Î ¹Ş¾Æ¿È.
+        Floors = GameObject.FindGameObjectsWithTag("Floor"); // Flooríƒœê·¸ë¥¼ ê°–ê³  ìˆëŠ” ì˜¤ë¸Œì íŠ¸ë¥¼ ë°°ì—´ë¡œ ë°›ì•„ì˜´
     }
 
     // Update is called once per frame
@@ -76,7 +76,7 @@ public class Manager : MonoBehaviour
         return target;
     }
 
-    void ItemRandomPos() // ¾ÆÀÌÅÛÀÌ »ı¼ºµÉ À§Ä¡¸¦ Á¤ÇÔ
+    void ItemRandomPos() // ì•„ì´í…œì´ ìƒì„±ë  ìœ„ì¹˜ë¥¼ ì •í•¨
     {
         if (currentObjectCount + 1 > objectSpwanCount) return;
 
@@ -91,7 +91,7 @@ public class Manager : MonoBehaviour
         }
     }
 
-    void ItemSqwanTime() // ¾ÆÀÌÅÛ »ı¼º ½Ã°£
+    void ItemSqwanTime() // ì•„ì´í…œ ìƒì„± ì‹œê°„
     {
         if (currentObjectCount + 1 > objectSpwanCount)
         {
@@ -112,7 +112,7 @@ public class Manager : MonoBehaviour
         }
     }
 
-    void ItemBuffHP() // 2¹ø ¾ÆÀÌÅÛÀ» ¸Ô°í Ã¼·ÂÀÌ 2ÀÌÇÏ¶ó¸é Ã¼·Â 1 Áõ°¡
+    void ItemBuffHP() // 2ë²ˆ ì•„ì´í…œì„ ë¨¹ê³  ì²´ë ¥ì´ 2ì´í•˜ë¼ë©´ ì²´ë ¥ 1 ì¦ê°€
     {
         if (itemBuffHP)
         {
