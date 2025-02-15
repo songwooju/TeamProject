@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    const float moveStep = 1.1f;
+
     float time;
     public GameObject prefabBullet;
     public GameObject GameOverUI;
@@ -20,14 +22,6 @@ public class Player : MonoBehaviour
     Vector3 originPos, targetPos; // 원래 위치, 목표 위치
     float timeToMove = 0.2f; // 이동시간
 
-    Vector3 upDirection = new Vector3(0f, 1.1f, 0.0f);
-    Vector3 leftDirection = new Vector3(-1.1f, 0f, 0.0f);
-    Vector3 downDirection = new Vector3(0f, -1.1f, 0.0f);
-    Vector3 rightDirection = new Vector3(1.1f, 0f, 0.0f);
-
-    private Vector3 currentPos; // 플레이어의 현재 위치
-    private int cPos_y; // 배열에서 플레이어의 세로 위치
-    private int cPos_x; //배열에서 플레이어의 가로 위치
 
     AudioSource audioSrc;
     private void Start()
@@ -43,8 +37,10 @@ public class Player : MonoBehaviour
         }
 
         time = 0;
-        characterArray();
-        cPosTo_1();
+
+        manager.CheckCharacterArray(this.transform.position);
+        manager.ArrayPosTo1();
+
         audioSrc = GetComponent<AudioSource>();
         audioSrc.Stop();
     }
@@ -54,7 +50,6 @@ public class Player : MonoBehaviour
     {
         FireBullet();
         CheckHealth();
-        PlayerMove();
     }
 
     public void FireBullet()
@@ -130,15 +125,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    IEnumerator Move(Vector3 direction)
+    IEnumerator Move(Vector3 targetPosition)
     {
         isMoving = true;
-        cPosTo_0();
+        manager.CheckCharacterArray(transform.position);
+        manager.ArrayPosTo0();
 
         float escapeTime = -0.1f;
 
         originPos = transform.position;
-        targetPos = originPos + direction;
+        targetPos = targetPosition;
 
         while (escapeTime < timeToMove)
         {
@@ -148,77 +144,63 @@ public class Player : MonoBehaviour
         }
 
         transform.position = targetPos;
-        cPosTo_1();
+        manager.CheckCharacterArray(transform.position);
+        manager.ArrayPosTo1();
         isMoving = false;
     }
 
-    void PlayerMove()
+    void PlayerMove(int deltaX, int deltaY)
     {
-        if (Input.GetKey(KeyCode.UpArrow) && !isMoving && currentPos.y < -1)
-        {
-            if (manager.posArray[cPos_y - 1, cPos_x] >= 1) return;
-            StartCoroutine(Move(upDirection));
-        }
-        if (Input.GetKey(KeyCode.LeftArrow) && !isMoving && currentPos.x > -1)
-        {
-            if (manager.posArray[cPos_y, cPos_x - 1] >= 1) return;
-            StartCoroutine(Move(leftDirection));
-        }
-        if (Input.GetKey(KeyCode.DownArrow) && !isMoving && currentPos.y > -2)
-        {
-            if (manager.posArray[cPos_y + 1, cPos_x] >= 1) return;
-            StartCoroutine(Move(downDirection));
-        }
-        if (Input.GetKey(KeyCode.RightArrow) && !isMoving && currentPos.x < 0.5)
-        {
-            if (manager.posArray[cPos_y, cPos_x + 1] >= 1) return;
-            StartCoroutine(Move(rightDirection));
-        }
+        Vector3 currentPos = this.transform.position;
+        manager.CheckCharacterArray(currentPos);
+
+        int arrayTargetX = manager.XPos + deltaX;
+        int arrayTargetY = manager.YPos + deltaY;
+
+        if (manager.IsNotPos0(arrayTargetX, arrayTargetY)) return; // arrayTarget 이 0이 아니라면 return
+
+        float targetX = currentPos.x + (deltaX * moveStep); // x 는 int 형인데 이렇게 해도 되는지 모르겠음. 확실하게 하는게 좋음
+        float targetY = currentPos.y + (deltaY * moveStep); // currentPos y 는 아래로 내려갈 때 - 를 해줘야함. 근데 deltaY 는 위로 올라갈 때 - 를 해줌. 위에서부터 0 1 2 라서
+
+        if (targetX < -2 || targetX > 1.5f || targetY < -3 || targetY > 1) return;
+        Vector3 targetPosition = new Vector3(targetX, targetY, transform.position.z);
+
+        StartCoroutine(Move(targetPosition));
     }
 
-    void cPosTo_1() // 플레이어가 있는 위치를 3x3 배열로 표현했을때 1로 바꿔줌, 0이 기본, 1이 현재 위치해 있다는것을 의미.
+    private void OnEnable()
     {
-        characterArray();
-        manager.posArray[cPos_y, cPos_x] = 1;
+        if (TouchManager.Instance != null)
+        {
+            TouchManager.Instance.OnSwipe += HandleSwipe;
+        }
+
     }
 
-    void cPosTo_0() // 캐릭터가 현재위치를 벗어났을 때 배열을 1에서 0으로 바꿔주기 위한 함수
+    private void OnDisable()
     {
-        characterArray();
-        manager.posArray[cPos_y, cPos_x] = 0;
+        if (TouchManager.Instance != null)
+            TouchManager.Instance.OnSwipe -= HandleSwipe;
     }
-    void characterArray() // 처음 캐릭터의 위치를 배열에 표현하기 위한 함수, Initialize함수가 생기면 그 안에 넣어야함.
+
+    void HandleSwipe(Player touchedCharacter, Vector2 swipeDirection)
     {
-        currentPos = this.gameObject.transform.position;
-        if (currentPos.y > -1)
+        if (touchedCharacter == this)
         {
-            cPos_y = 0;
-            if (currentPos.x < -1)
-                cPos_x = 0;
-            else if (-1 < currentPos.x && currentPos.x < 0)
-                cPos_x = 1;
-            else if (currentPos.x > 0)
-                cPos_x = 2;
-        }
-        else if (-2 < currentPos.y && currentPos.y < -1)
-        {
-            cPos_y = 1;
-            if (currentPos.x < -1)
-                cPos_x = 0;
-            else if (-1 < currentPos.x && currentPos.x < 0)
-                cPos_x = 1;
-            else if (currentPos.x > 0)
-                cPos_x = 2;
-        }
-        else
-        {
-            cPos_y = 2;
-            if (currentPos.x < -1)
-                cPos_x = 0;
-            else if (-1 < currentPos.x && currentPos.x < 0)
-                cPos_x = 1;
-            else if (currentPos.x > 0)
-                cPos_x = 2;
+            int deltaX = 0;
+            int deltaY = 0;
+   
+            if (Mathf.Abs(swipeDirection.x) > Mathf.Abs(swipeDirection.y)) // 수평, 수직 스와이프 중 어느 쪽의 크기가 큰지에 따라 이동 방향 결정
+            {
+                deltaX = swipeDirection.x > 0 ? 1 : -1;  // 수평 이동: 오른쪽이면 +1, 왼쪽이면 -1
+            }
+            else
+            {
+                deltaY = swipeDirection.y > 0 ? 1 : -1;  // 수직 이동: 위이면 1, 아래이면 1, 위에서부터 2 1 0
+            }
+
+            Debug.Log(deltaX + ", " + deltaY);
+            if (!isMoving) PlayerMove(deltaX, deltaY); // 해당 캐릭터가 이동하지 않을 때만 이동하게
         }
     }
 
@@ -227,7 +209,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
 
         Time.timeScale = 0f;
-        GameOverUI.SetActive(true);
+        if (!GameOverUI.activeSelf) GameOverUI.SetActive(true);
     }
 
     public void OnGameOverButtonClick()

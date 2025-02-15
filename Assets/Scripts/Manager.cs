@@ -10,6 +10,10 @@ public class Manager : MonoBehaviour
     private RaycastHit2D mHit;
 
     public int[,] posArray = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } }; // 3x3 배열을 만들어서 타일 위치에 플레이어가 있는지 확인하는 용도
+    int xPos;
+    public int XPos { get { return xPos; } }
+    int yPos;
+    public int YPos { get { return yPos; } }
 
     public GameObject[] Floors; // 바닥을 배열로 받음
 
@@ -31,6 +35,9 @@ public class Manager : MonoBehaviour
     public Transform[] players;
 
     public bool isBossAttack; // 보스 애니메이션 적용을 위한 변수
+
+    [SerializeField]
+    GameObject GameOverUI;
 
     private void Awake() // 싱글톤
     {
@@ -172,5 +179,49 @@ public class Manager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         SpriteRenderer playerRenderer = player.GetComponent<SpriteRenderer>();
         playerRenderer.color = color;
+    }
+
+    public void CheckPosArray(int randomTileIndex)
+    {
+        xPos = randomTileIndex / 3;
+        yPos = 2 - (randomTileIndex % 3);
+    }
+
+    public void CheckCharacterArray(Vector3 characterPos) // 캐릭터의 위치를 배열에 표현하기 위한 함수
+    {
+        if (characterPos.y > -1) yPos = 2;
+        else if (-2 < characterPos.y && characterPos.y < -1) yPos = 1;
+        else yPos = 0;
+
+        if (characterPos.x < -1) xPos = 0;
+        else if (-1 < characterPos.x && characterPos.x < 0) xPos = 1;
+        else if (characterPos.x > 0) xPos = 2;
+    }
+
+    public bool IsNotPos0(int x , int y)
+    {
+        if (posArray[x, y] != 0) return true;
+        return false;
+    }
+
+    public bool IsNotPos0()
+    {
+        if (posArray[xPos, yPos] != 0) return true;
+        return false;
+    }
+
+    public void ArrayPosTo0()
+    {
+        posArray[xPos, yPos] = 0;
+    }
+
+    public void ArrayPosTo1()
+    {
+        posArray[xPos, yPos] = 1;
+    }
+
+    public void GameOver()
+    {
+
     }
 }
